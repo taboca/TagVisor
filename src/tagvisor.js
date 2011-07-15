@@ -39,6 +39,16 @@ var scaleold=null;
 var scale=null;
 var timer = null;
 
+var dataStyle = " #pagetranslate { -moz-transform-origin:0 0; width:2000px; height:2000px; } #pagescale { } html { background-color:black;} .viewport { width:700px; background-color:white; height:500px; -moz-transform-origin:0 0; -o-transform-origin:0 0; -webkit-transform-origin:0 0; overflow:hidden; } div  { position:relative; } "; 
+
+function setup() { 
+	var inlinestyle = document.createElement('link');
+	inlinestyle.setAttribute("rel","stylesheet");
+
+	inlinestyle.setAttribute("href","data:text/css,"+ escape(dataStyle));
+	
+	document.getElementsByTagName("head")[0].appendChild(inlinestyle);
+} 
 
 function reload() { 
 	document.location= document.location;
@@ -114,15 +124,16 @@ function animateNext(a,t) {
 	var www = window.innerWidth;		        
         var scale = www/(ww+800);
 
-	var indexPos = document.styleSheets[1].cssRules.length;
+	var indexPos = document.styleSheets[0].cssRules.length;
 
-	document.styleSheets[1].insertRule("#pagetranslate {  -moz-transition-property: -moz-transform; -moz-transform:scale("+scale+"); -moz-transition-duration:3s;  -webkit-transition-property: -webkit-transform; -webkit-transform:scale("+scale+"); -webkit-transition-duration:3s;  -o-transition-property: -o-transform; -o-transform:scale("+scale+"); -o-transition-duration:3s;}",indexPos);
+	document.styleSheets[0].insertRule("#pagetranslate {  -moz-transition-property: -moz-transform; -moz-transform:scale("+scale+"); -moz-transition-duration:3s;  -webkit-transition-property: -webkit-transform; -webkit-transform:scale("+scale+"); -webkit-transition-duration:3s;  -o-transition-property: -o-transform; -o-transform:scale("+scale+"); -o-transition-duration:3s;}",indexPos);
 
 	scaleold = scale; 
 	x-=0;
-	var indexPos = document.styleSheets[1].cssRules.length;
-        document.styleSheets[1].insertRule("#pagescale { -moz-transition-property: -moz-transform; -moz-transform:translate("+-1*x+","+-1*y+"); -moz-transition-duration:"+t+"s; -webkit-transition-property: -webkit-transform; -webkit-transform:translate("+-1*x+","+-1*y+"); -webkit-transition-duration:"+t+"s; -o-transition-property: -o-transform; -o-transform:translate("+-1*x+","+-1*y+"); -o-transition-duration:"+t+"s;   }",indexPos); 
+	var indexPos = document.styleSheets[0].cssRules.length;
+        document.styleSheets[0].insertRule("#pagescale { -moz-transition-property: -moz-transform; -moz-transform:translate("+-1*x+","+-1*y+"); -moz-transition-duration:"+t+"s; -webkit-transition-property: -webkit-transform; -webkit-transform:translate("+-1*x+","+-1*y+"); -webkit-transition-duration:"+t+"s; -o-transition-property: -o-transform; -o-transform:translate("+-1*x+","+-1*y+"); -o-transition-duration:"+t+"s;   }",indexPos); 
 	
 //	rulesCounter+=2;
 } 
 
+setup();

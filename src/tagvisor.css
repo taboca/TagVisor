@@ -1,0 +1,25 @@
+#pagetranslate { 
+  -moz-transform-origin:0 0;
+	width:2000px;
+	height:2000px;
+} 
+
+#pagescale { 
+
+} 
+
+html { background-color:black;} 
+
+.viewport { 
+  width:700px; 
+	background-color:white;
+  height:500px; 
+  -moz-transform-origin:0 0;
+  -o-transform-origin:0 0;
+  -webkit-transform-origin:0 0;
+  overflow:hidden;
+} 
+
+div  { 
+  position:relative;
+} 
