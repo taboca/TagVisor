@@ -39,23 +39,90 @@ var scaleold=null;
 var scale=null;
 var timer = null;
 
+
 function reload() { 
 	document.location= document.location;
 } 
 
-function animateNext(id,t) { 
-	var a = document.getElementById(id);
-	rulesCounter+=2;
+function add(list) { 
+	for(var i=0;i<list.length;i++) { 
+		var item = list[i];
+		var time = item.getAttribute("data-time");
+		if(time.indexOf("s")>-1) { 
+			var secs = time.split("s")[0];
+			// we use 2 ticks per sec
+			var tickStamp = parseInt(secs*2); 
+			itemsByTicks[tickStamp] = item; 
+		} 
+	} 	
+} 
+
+var currentTick = null; 
+var playMode = false; 
+var counterSequential = 0;
+var ticksSerialized = new Array();
+var itemsByTicks = new Array();
+
+function play() { 
+	playMode=true; 
+	
+	var i=0;
+	for (key in itemsByTicks) { 
+		ticksSerialized[i]=key;
+		i++;
+	} 
+	ticksSerialized[i]=-1;
+	currentTick=0;
+	counterSequential=0;
+	tick();
+} 
+
+function tick() { 
+	if(playMode) { 
+		try { 
+			var nextTick = ticksSerialized[counterSequential];
+			if(nextTick > -1) {
+				if(nextTick==currentTick) { 
+					var lookUpElement = itemsByTicks[currentTick];
+					if(lookUpElement) { 
+						//	var fAction = lookUpElement.getAttribute("data-function"); 
+						animateNext(lookUpElement,2);
+						counterSequential++;
+						
+					} 
+				
+				} 
+						currentTick++;
+						setTimeout("tick()",500); 
+			} else { 
+				//end
+			} 
+
+		} catch (i) { 
+			currentTick++;
+			setTimeout("tick()",500); 
+		}
+	} 
+} 
+
+
+function animateNext(a,t) { 
+
 	var x= a.offsetLeft; 	
 	var y= a.offsetTop; 	
 	var ww = a.offsetWidth;
 	var www = window.innerWidth;		        
         var scale = www/(ww+800);
-	document.styleSheets[0].insertRule(".wholearea {  -moz-transition-property: -moz-transform; -moz-transform:scale("+scale+"); -moz-transition-duration:3s;  -webkit-transition-property: -webkit-transform; -webkit-transform:scale("+scale+"); -webkit-transition-duration:3s;  -o-transition-property: -o-transform; -o-transform:scale("+scale+"); -o-transition-duration:3s;}",rulesCounter+1);
-console.log("escala: " + scale);
+
+	var indexPos = document.styleSheets[1].cssRules.length;
+
+	document.styleSheets[1].insertRule("#pagetranslate {  -moz-transition-property: -moz-transform; -moz-transform:scale("+scale+"); -moz-transition-duration:3s;  -webkit-transition-property: -webkit-transform; -webkit-transform:scale("+scale+"); -webkit-transition-duration:3s;  -o-transition-property: -o-transform; -o-transform:scale("+scale+"); -o-transition-duration:3s;}",indexPos);
+
 	scaleold = scale; 
 	x-=0;
-        document.styleSheets[0].insertRule(".page { -moz-transition-property: -moz-transform; -moz-transform:translate("+-1*x+","+-1*y+"); -moz-transition-duration:"+t+"s; -webkit-transition-property: -webkit-transform; -webkit-transform:translate("+-1*x+","+-1*y+"); -webkit-transition-duration:"+t+"s; -o-transition-property: -o-transform; -o-transform:translate("+-1*x+","+-1*y+"); -o-transition-duration:"+t+"s;   }",rulesCounter); 
+	var indexPos = document.styleSheets[1].cssRules.length;
+        document.styleSheets[1].insertRule("#pagescale { -moz-transition-property: -moz-transform; -moz-transform:translate("+-1*x+","+-1*y+"); -moz-transition-duration:"+t+"s; -webkit-transition-property: -webkit-transform; -webkit-transform:translate("+-1*x+","+-1*y+"); -webkit-transition-duration:"+t+"s; -o-transition-property: -o-transform; -o-transform:translate("+-1*x+","+-1*y+"); -o-transition-duration:"+t+"s;   }",indexPos); 
 	
+//	rulesCounter+=2;
 } 
 

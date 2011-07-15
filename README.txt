@@ -1,3 +1,7 @@
+
+
+== License ==
+
 All source code is available in the following terms. The name, TagVisor, TelaSocial, Taboca are trademarks of Marcio S. Galli. The music is in the public domain and the image was generated using XML information from http://musescore.com/score/558
 
 ***** BEGIN LICENSE BLOCK *****
