@@ -1,0 +1,51 @@
+    h1 { 
+	color:lightblue;
+    } 
+    a { 
+        color:orange;
+    } 
+    table#grade td { 
+	padding:1em;
+	font-size:120%;
+    } 
+	
+    .viewport { 
+	width:700px; 
+
+	-moz-border-radius:25px;
+	-webkit-border-radius:25px; 
+	border-radius: 25px; 
+
+	-moz-transform-origin:0 0;
+	-o-transform-origin:0 0;
+	-webkit-transform-origin:0 0;
+
+        background-image: -moz-linear-gradient(top, rgb(255,255,255) , rgb(100,155,255)); 
+  	background-image: -webkit-linear-gradient(top, rgb(255,255,255) , rgb(100,155,255));
+  	background-image: -ms-linear-gradient(top, rgb(255,255,255) , rgb(100,155,255));
+  	background-image: -webkit-linear-gradient(top, rgb(255,255,255) , rgb(100,155,255));
+  	background-image: -o-linear-gradient(top, rgb(255,255,255) , rgb(100,155,255));
+  	background-image: linear-gradient(top, rgb(255,255,255) , rgb(100,155,255));
+
+	height:500px; 
+	overflow:hidden;
+	background-color:white;
+	font-family:verdana;
+    } 
+	
+    html { 
+	background:black;
+	color:#ddd; 
+    } 
+
+    div  { 
+	position:relative;
+    } 
+
+   .chunk { 
+	position:relative;
+	float:left;
+	width:515px; 
+	height:500px;
+   } 
+

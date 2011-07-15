@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>Mozilla Studio Demonstration: Prelude in C tagvisor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script src="tagvisor.js"></script>
+<script>
+  function start() {
+
+		document.getElementById("music").play();
+                /* We loop through DIVs, stiff things about them, desired behavior, 
+                and we add a bunch of things to the future of the document. This of 
+                a webdocument as a piece of information that has present, past, and 
+                a perhaps nice future. R/W web does up to how you observe a page -- 
+                richer observation frameworks. */
+
+                var position=0;
+                for(var i=1;i<=17;i++) {
+                        var currentDiv = document.getElementById("a"+i);
+                        var time = 2;
+                        try{
+                                if(currentDiv.getAttribute("data-guide")) {
+                                        position-=200;
+                                        time=.5;
+                                }
+                        } catch (ignore) { }
+                        timer = setTimeout("animateNext('a"+i+"',"+time+")",position);
+                        console.log("animateNext('a"+i+"',"+time+") and " + position);
+                        position+=2000;
+                }
+        }
+
+	document.addEventListener("canplaythrough",function (e) { start(); }, true);
+
+	function setup() { 
+
+		document.getElementById("music").play();
+		document.getElementById("music").pause();
+
+	} 
+
+</script>
+<link rel="stylesheet" media="screen,projection,tv" href="style.css" />
+</head>
+
+<body onload="setup()">
+<div style="color:white;width:600px;margin-bottom:2em">
+<h1><span style='color:lightgreen;'>Conductor</span> <span style='color:gray;font-size:60%'>ft</span> <span style='color:lightgreen'>Prelude in C</span><span style='font-size:50%;position:relative;top:-20px;margin-left:1em;color:gray'>By J.S. Bach</span></h1>
+This demonstration uses CSS animation effects to produce an animated guide experience over a web page. The basic idea is that any web page can now be enhanced and become an experience in motion that supports the observer to enjoy existing web content in different ways. <a href="static.html" >See this web page copy without the animation</a> and <a href="javascript:" onclick="reload()">and here to replay</a>.
+</div>
+<audio id="music" style="display:block" src="score.ogg" controls="controls" >
+Your browser does not support the audio element.
+</audio>
+
+<div id='overflower' >
+<div id='viewport' class='viewport' style=''>
+<div id='wholearea' class='wholearea' style='-moz-transform-origin: 0 0;width:3240px;height:1920px;'>
+<div id='page' class='page'>
+
+<div>
+<img style='position:absolute;top:-150px' src='prelude.png' />
+
+<div style='position:absolute;top:0px;padding-left:150px;width:2680px;' >
+
+<div class="" id="a17">
+
+<div class='chunk' id="a1" style="width:670px"> </div>
+<div class='chunk' id="a2" style=""> </div>
+<div class='chunk' id="a3" style=""> </div>
+<div class='chunk' id="a4" style=""> </div>
+
+<div class='chunk' id="a5" style="width:650" data-guide="half"> </div>
+<div class='chunk' id="a6" style="width:460"> </div>
+<div class='chunk' id="a7" style="width:525"> </div>
+<div class='chunk' id="a8" style="width:570"> </div>
+
+<div class='chunk' id="a9" style="width:625px" data-guide="half"> </div>
+<div class='chunk' id="a10" style=""> </div>
+<div class='chunk' id="a11" style="width:535px"> </div>
+<div class='chunk' id="a12" style="width:525px"> </div>
+
+<div class='chunk' id="a13" style="width:635px" data-guide="half"> </div>
+<div class='chunk' id="a14" style="width:820px"> </div>
+<div class='chunk' id="a15" style="width:440px" > </div>
+<div class='chunk' id="a16" style=""> </div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="color:white;width:600px;margin:auto;margin-bottom:3em">
+<h1>About the Demo: Div Transitions</h1>
+The concept is that any web page can become a stage for animated effects. Div Transitions creates the concept of an observer. The overserver, in this case, is a DIV element and its' imediate children receives events of transformations, thus causing the effect of observation. It explores the gap between motion picture and web pages, it aims to be a system that can allow users to toggle between the normal desktop view of a web page and a new state, an in-motion state. <a href="static.html">Check the normal view of this page -- without animation</a>.
+<h1>Featuring</h1>
+JavaScript, CSS 3 Transformations, Web Content, HTML5, Audio. 
+<h1>Contents in the Demonstration</h1>
+All this source code is available under MPL 1.1/GPL 2.0/LGPL 2.1. The song, Prelude in C, by J.S. Bach is in the public domain. For additional information, visit <a href="http://musescore.com/score/558">Predule in C, BWV 939 in musescore.com</a>.
+
+This demonstration uses DOM interfaces to dynamically create Style rules that can transform the document. The time-based information, choreography of events, was developed using JavaScript setTimeout instructions as a means to illustrate the simplicity of the concept, which is, the ability to insert events that changes the nature of the document, in this case, transformations that are applied to a viewport element. 
+
+<h1>Credits</h1>
+
+Many thanks to Fabricio Zuardi for special guidance and ability to oversee my special way of coding. For him, again, a few keywords of inspiration: ww, www, c, c, ccc, cccc, dd, ii, and Marcio's famous catch(i) { // where i means ignore } and not to forget the very handy "border:0px solid red". Fabricio is also the mind that suggested using a score image as the page background.
+
+</div>
+</body>
+</html>

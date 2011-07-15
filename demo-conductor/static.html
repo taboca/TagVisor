@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Mozilla Studio Demonstration: Prelude in C</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<style id="pagestyle">
+ 
+    h1 { 
+	color:lightblue;
+    } 
+    a { 
+        color:lightblue;
+    } 
+
+    table#grade td { 
+	padding:1em;
+	font-size:120%;
+    } 
+	
+    .viewport { 
+	background-color:white;
+	width:2480px;
+	font-family:verdana;
+    } 
+	
+    html { 
+	background:black;
+	color:#ddd; 
+    } 
+
+    div  { 
+	position:relative;
+    } 
+
+   .chunk { 
+	position:relative;
+	float:left;
+	width:515px; 
+	background-color:rgba(255,0,0,.5);
+	-moz-border-radius:25px;
+	border:2px solid white;
+	height:500px;
+   } 
+
+</style>
+</head>
+
+<body onload="start()">
+<div style="color:white;width:600px;margin:auto;margin-bottom:1em">
+<h1>Making Of</h1>
+Now you see the whole phrase, a png image background that has the music score. You should also see some elements on top that shows the target areas. Each target area was associated with an event of transformation. 
+</div>
+
+<div id='overflower' >
+<div id='viewport' class='viewport' style='margin:auto;'>
+<div id='wholearea' class='wholearea' style='-moz-transform-origin: 0 0;width:3240px;height:1920px;'>
+<div id='page' class='page'>
+
+<div style="">
+<img style='position:absolute;top:-150px' src='prelude.png' />
+
+<div style='position:absolute;top:0px;padding-left:150px;width:2680px;' >
+
+<div class='chunk' id="a1" style="width:670px"> </div>
+<div class='chunk' id="a2" style=""> </div>
+<div class='chunk' id="a3" style=""> </div>
+<div class='chunk' id="a4" style=""> </div>
+
+<div class='chunk' id="a5" style="width:650" data-guide="half"> </div>
+<div class='chunk' id="a6" style="width:460"> </div>
+<div class='chunk' id="a7" style="width:525"> </div>
+<div class='chunk' id="a8" style="width:570"> </div>
+
+<div class='chunk' id="a9" style="width:625px" data-guide="half"> </div>
+<div class='chunk' id="a10" style=""> </div>
+<div class='chunk' id="a11" style="width:535px"> </div>
+<div class='chunk' id="a12" style="width:525px"> </div>
+
+<div class='chunk' id="a13" style="width:635px" data-guide="half"> </div>
+<div class='chunk' id="a14" style="width:820px"> </div>
+<div class='chunk' id="a15" style="width:440px" > </div>
+<div class='chunk' id="a16" style=""> </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
