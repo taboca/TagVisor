@@ -2,19 +2,33 @@
 <head>
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<script src="../src/tagvisor.js"></script>
+<script src="../engine/tagvisor.js"></script>
 <script type="text/javascript" src="jquery-min.js"></script>
 <script>
 
   function start() {
 
-	add($('.area'),"transition");
+	setStage();
+	add($('.slide'),"transition");
 	play();
 
   } 
 
+
+
 </script>
 
+<style>
+.viewport { 	
+	margin-top:2em;
+	-moz-box-shadow:0 0 25px black;	
+	-moz-border-radius:35px;
+} 
+
+.slide { 
+	padding:1em;
+} 
+</style>
 
 </head>
 
@@ -27,24 +41,24 @@
 <table>
 <tr>
 <td>
-<div class='area' data-time="2s">
+<div class='slide' data-time="2s">
 <h1>Area 1</h1>
 </div>
 </td>
 <td>
-<div class='area' data-time="4s">
+<div class='slide' data-time="4s">
 <h1>Area 1</h1>
 </div>
 </td>
 </tr>
 <tr>
 <td>
-<div class='area' data-time="6s">
+<div class='slide' data-time="6s">
 <h1>Area 1</h1>
 </div>
 </td>
 <td>
-<div class='area' data-time="8s">
+<div class='slide' data-time="8s">
 <h1>Area 1</h1>
 </div>
 </td>

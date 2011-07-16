@@ -39,14 +39,18 @@ var scaleold=null;
 var scale=null;
 var timer = null;
 
-var dataStyle = " #pagetranslate { -moz-transform-origin:0 0; width:2000px; height:2000px; } #pagescale { } html { background-color:black;} .viewport { width:700px; background-color:white; height:500px; -moz-transform-origin:0 0; -o-transform-origin:0 0; -webkit-transform-origin:0 0; overflow:hidden; } div  { position:relative; } "; 
+var dataStyle = " #pagetranslate { -moz-transform-origin:0 0; } #pagescale { } div.slide { position:relative; } "; 
+
+
+function setStage() { 
+	document.getElementById("viewport").setAttribute("style", "margin:auto;position:relative;width:700px; background-color:white; height:500px; -moz-transform-origin:0 0; -o-transform-origin:0 0; -webkit-transform-origin:0 0; overflow:hidden;"); 
+	document.getElementById("pagetranslate").setAttribute("style", "width:1200px; height:1200px"); 
+} 
 
 function setup() { 
 	var inlinestyle = document.createElement('link');
 	inlinestyle.setAttribute("rel","stylesheet");
-
 	inlinestyle.setAttribute("href","data:text/css,"+ escape(dataStyle));
-	
 	document.getElementsByTagName("head")[0].appendChild(inlinestyle);
 } 
 
@@ -74,6 +78,8 @@ var ticksSerialized = new Array();
 var itemsByTicks = new Array();
 
 function play() { 
+
+	setStage();
 	playMode=true; 
 	
 	var i=0;
