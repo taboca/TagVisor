@@ -2,9 +2,9 @@
 <head>
 <title>Mozilla Studio Demonstration: Prelude in C tagvisor</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<link rel="stylesheet" media="screen,projection,tv" href="style.css" />
 <script src="../src/tagvisor.js"></script>
 <script src="jquery-min.js"></script>
+<link rel="stylesheet" media="screen,projection,tv" href="style.css" />
 <script>
 
   var isPlaying = false;
@@ -39,21 +39,15 @@
 </head>
 
 <body onload="setup()">
-<div style="color:white;width:600px;margin-bottom:2em">
-<h1><span style='color:lightgreen;'>Conductor</span> <span style='color:gray;font-size:60%'>ft</span> <span style='color:lightgreen'>Prelude in C</span><span style='font-size:50%;position:relative;top:-20px;margin-left:1em;color:gray'>By J.S. Bach</span></h1>
-This demonstration uses CSS animation effects to produce an animated guide experience over a web page. The basic idea is that any web page can now be enhanced and become an experience in motion that supports the observer to enjoy existing web content in different ways. <a href="static.html" >See this web page copy without the animation</a> and <a href="javascript:" onclick="reload()">and here to replay</a>.
-</div>
 <audio id="music" style="display:block" src="score.ogg" controls="controls" >
 Your browser does not support the audio element.
 </audio>
 
-<div id='overflower' >
-<div id='viewport' class='viewport' style=''>
-<div id='pagetranslate' class='wholearea' style='-moz-transform-origin: 0 0;width:3240px;height:1920px;'>
-<div id='pagescale' class='page'>
+<div id='viewport' class='viewport' >
+<div id='pagetranslate' >
+<div id='pagescale' style='position:relative'>
 
-<div style='position:relative'>
-<img style='position:absolute;top:-150px' src='prelude.png' />
+<img style='position:absolute;top:-150px' src='prelude.png' ></div>
 
 <div style='position:relative;top:0px;padding-left:150px;width:2680px;' >
 
@@ -85,23 +79,6 @@ Your browser does not support the audio element.
 </div>
 </div>
 </div>
-</div>
-</div>
 
-<div style="color:white;width:600px;margin:auto;margin-bottom:3em">
-<h1>About the Demo: Div Transitions</h1>
-The concept is that any web page can become a stage for animated effects. Div Transitions creates the concept of an observer. The overserver, in this case, is a DIV element and its' imediate children receives events of transformations, thus causing the effect of observation. It explores the gap between motion picture and web pages, it aims to be a system that can allow users to toggle between the normal desktop view of a web page and a new state, an in-motion state. <a href="static.html">Check the normal view of this page -- without animation</a>.
-<h1>Featuring</h1>
-JavaScript, CSS 3 Transformations, Web Content, HTML5, Audio. 
-<h1>Contents in the Demonstration</h1>
-All this source code is available under MPL 1.1/GPL 2.0/LGPL 2.1. The song, Prelude in C, by J.S. Bach is in the public domain. For additional information, visit <a href="http://musescore.com/score/558">Predule in C, BWV 939 in musescore.com</a>.
-
-This demonstration uses DOM interfaces to dynamically create Style rules that can transform the document. The time-based information, choreography of events, was developed using JavaScript setTimeout instructions as a means to illustrate the simplicity of the concept, which is, the ability to insert events that changes the nature of the document, in this case, transformations that are applied to a viewport element. 
-
-<h1>Credits</h1>
-
-Many thanks to Fabricio Zuardi for special guidance and ability to oversee my special way of coding. For him, again, a few keywords of inspiration: ww, www, c, c, ccc, cccc, dd, ii, and Marcio's famous catch(i) { // where i means ignore } and not to forget the very handy "border:0px solid red". Fabricio is also the mind that suggested using a score image as the page background.
-
-</div>
 </body>
 </html>
