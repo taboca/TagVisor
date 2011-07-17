@@ -39,12 +39,12 @@ var scaleold=null;
 var scale=null;
 var timer = null;
 
-var dataStyle = " #pagetranslate { -moz-transform-origin:0 0; } #pagescale { } div.slide { position:relative; } "; 
+var dataStyle = " #pagetranslate { -moz-transform-origin:0 0; } #pagescale { } .slide { position:relative; } "; 
 
 
 function setStage() { 
-	document.getElementById("viewport").setAttribute("style", "margin:auto;position:relative;width:700px; background-color:white; height:500px; -moz-transform-origin:0 0; -o-transform-origin:0 0; -webkit-transform-origin:0 0; overflow:hidden;"); 
-	document.getElementById("pagetranslate").setAttribute("style", "width:1200px; height:1200px"); 
+	document.getElementById("viewport").setAttribute("style", "margin:auto;position:relative;background-color:white; height:500px; -moz-transform-origin:0 0; -o-transform-origin:0 0; -webkit-transform-origin:0 0; overflow:hidden;"); 
+//	document.getElementById("pagetranslate").setAttribute("style", "width:1200px; height:1200px"); 
 } 
 
 function setup() { 
@@ -58,15 +58,35 @@ function reload() {
 	document.location= document.location;
 } 
 
+function sortArray(arr){
+  var sortedKeys = new Array();
+  var sortedObj = {};
+  for (var i in arr){
+	sortedKeys.push(i);
+  }
+  sortedKeys.sort(sortNumber);
+  for (var i in sortedKeys){
+	sortedObj[sortedKeys[i]] = arr[sortedKeys[i]];
+  }
+  return sortedObj;
+}
+
+function sortNumber(a,b)
+{
+return a - b;
+}
+
 function add(list) { 
 	for(var i=0;i<list.length;i++) { 
 		var item = list[i];
 		var time = item.getAttribute("data-time");
+		if(time) { 
 		if(time.indexOf("s")>-1) { 
 			var secs = time.split("s")[0];
 			// we use 2 ticks per sec
 			var tickStamp = parseInt(secs*2); 
 			itemsByTicks[tickStamp] = item; 
+		} 
 		} 
 	} 	
 } 
@@ -77,13 +97,17 @@ var counterSequential = 0;
 var ticksSerialized = new Array();
 var itemsByTicks = new Array();
 
+var sortedItems = new Array();
+
 function play() { 
 
 	setStage();
 	playMode=true; 
 	
+	sortedItems = sortArray(itemsByTicks);
+
 	var i=0;
-	for (key in itemsByTicks) { 
+	for (key in sortedItems) { 
 		ticksSerialized[i]=key;
 		i++;
 	} 
@@ -101,8 +125,12 @@ function tick() {
 				if(nextTick==currentTick) { 
 					var lookUpElement = itemsByTicks[currentTick];
 					if(lookUpElement) { 
-						//	var fAction = lookUpElement.getAttribute("data-function"); 
-						animateNext(lookUpElement,2);
+						var fAction = lookUpElement.getAttribute("data-duration"); 
+						var dur = 2;
+						if(fAction) { 
+							dur=parseInt(fAction);	
+						} 
+						animateNext(lookUpElement,dur);
 						counterSequential++;
 						
 					} 
@@ -129,11 +157,7 @@ function animateNext(a,t) {
 	var www = window.innerWidth;		        
         var scale = www/(ww+800);
 
-try { 
-
 	document.getElementById("pagetranslate").setAttribute("style"," -moz-transition-property: -moz-transform; -moz-transform:scale("+scale+"); -moz-transition-duration:3s;  -webkit-transition-property: -webkit-transform; -webkit-transform:scale("+scale+"); -webkit-transition-duration:3s;  -o-transition-property: -o-transform; -o-transform:scale("+scale+"); -o-transition-duration:3s;");
-
-} catch (i) { alert(i) } 
 
 	scaleold = scale; 
 	x-=0;

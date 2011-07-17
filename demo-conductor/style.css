@@ -38,13 +38,9 @@
 	color:#ddd; 
     } 
 
-    div  { 
-	position:relative;
-    } 
-
    .chunk { 
 	position:relative;
-	float:left;
+	display:inline-block;
 	width:515px; 
 	height:500px;
    } 
