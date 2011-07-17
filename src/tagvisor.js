@@ -121,7 +121,6 @@ function tick() {
 	} 
 } 
 
-
 function animateNext(a,t) { 
 
 	var x= a.offsetLeft; 	
@@ -130,14 +129,15 @@ function animateNext(a,t) {
 	var www = window.innerWidth;		        
         var scale = www/(ww+800);
 
-	var indexPos = document.styleSheets[0].cssRules.length;
+try { 
 
-	document.styleSheets[0].insertRule("#pagetranslate {  -moz-transition-property: -moz-transform; -moz-transform:scale("+scale+"); -moz-transition-duration:3s;  -webkit-transition-property: -webkit-transform; -webkit-transform:scale("+scale+"); -webkit-transition-duration:3s;  -o-transition-property: -o-transform; -o-transform:scale("+scale+"); -o-transition-duration:3s;}",indexPos);
+	document.getElementById("pagetranslate").setAttribute("style"," -moz-transition-property: -moz-transform; -moz-transform:scale("+scale+"); -moz-transition-duration:3s;  -webkit-transition-property: -webkit-transform; -webkit-transform:scale("+scale+"); -webkit-transition-duration:3s;  -o-transition-property: -o-transform; -o-transform:scale("+scale+"); -o-transition-duration:3s;");
+
+} catch (i) { alert(i) } 
 
 	scaleold = scale; 
 	x-=0;
-	var indexPos = document.styleSheets[0].cssRules.length;
-        document.styleSheets[0].insertRule("#pagescale { -moz-transition-property: -moz-transform; -moz-transform:translate("+-1*x+","+-1*y+"); -moz-transition-duration:"+t+"s; -webkit-transition-property: -webkit-transform; -webkit-transform:translate("+-1*x+","+-1*y+"); -webkit-transition-duration:"+t+"s; -o-transition-property: -o-transform; -o-transform:translate("+-1*x+","+-1*y+"); -o-transition-duration:"+t+"s;   }",indexPos); 
+        document.getElementById("pagescale").setAttribute("style","-moz-transition-property: -moz-transform; -moz-transform:translate("+-1*x+","+-1*y+"); -moz-transition-duration:"+t+"s; -webkit-transition-property: -webkit-transform; -webkit-transform:translate("+parseInt(-1*x)+"px,"+parseInt(-1*y)+"px); -webkit-transition-duration:"+t+"s; -o-transition-property: -o-transform; -o-transform:translate("+parseInt(-1*x)+"px,"+parseInt(-1*y)+"px); -o-transition-duration:"+t+"s;");
 	
 //	rulesCounter+=2;
 } 
