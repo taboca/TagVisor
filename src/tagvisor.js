@@ -146,8 +146,11 @@ var tv = {
 	animateNext: function (a,t) { 
 
 		var el = this.offset(a);
-		var x= el.left; 	
-		var y= el.top; 	
+
+		var refTranslate = document.getElementById("pagescale");
+		var elRefContainer = this.offset(refTranslate);
+		var x= el.left - elRefContainer.left; 	
+		var y= el.top - elRefContainer.top; 	
 		var ww = a.offsetWidth;
 		var www = window.innerWidth;		        
 	        var scale = www/(ww+800);
