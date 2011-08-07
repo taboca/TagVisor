@@ -173,7 +173,7 @@ try {
 	},
 
 	effects_scale: function (el, t) { 
-	        el.setAttribute("style","-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale(1.2);");
+	        el.setAttribute("style","-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale(1.4);");
 	},
 
 	effects_animateNext: function (a,t) { 
