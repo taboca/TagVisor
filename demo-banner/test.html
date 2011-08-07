@@ -1,0 +1,60 @@
+<!--
+     Any copyright is dedicated to the Public Domain.
+     http://creativecommons.org/licenses/publicdomain/
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:svg="http://www.w3.org/2000/svg">
+<body contenteditable="true" spellcheck="false" style="background:#ccc; font-size:30px;">
+  <style>
+    p { width:300px; border:1px solid black; display:inline-block; margin:1em; }
+    iframe { width:300px; height:300px; border:none; }
+    b { outline:1px dotted blue; }
+  </style>
+  <p class="target" style="background:lime;">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+  <iframe class="target" src="http://mozilla.org"/>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing
+    <b class="target">elit, sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua.</b> Ut enim ad minim veniam.</p>
+
+  <style>
+    p.target { filter:url(#f3); }
+    p.target:hover { filter:url(#f5); }
+    b.target { filter:url(#f1); }
+    b.target:hover { filter:url(#f4); }
+    iframe.target { filter:url(#f2); }
+    iframe.target:hover { filter:url(#f3); }
+  </style>
+  <svg:svg height="0">
+    <svg:filter id="f1">
+      <svg:feGaussianBlur stdDeviation="3"/>
+    </svg:filter>
+    <svg:filter id="f2">
+      <svg:feColorMatrix values="0.3333 0.3333 0.3333 0 0
+                                 0.3333 0.3333 0.3333 0 0
+                                 0.3333 0.3333 0.3333 0 0
+                                 0      0      0      1 0"/>
+
+    </svg:filter>
+    <svg:filter id="f3">
+      <svg:feConvolveMatrix filterRes="100 100" style="color-interpolation-filters:sRGB"
+       order="3" kernelMatrix="0 -1 0   -1 4 -1   0 -1 0" preserveAlpha="true"/>
+    </svg:filter>
+    <svg:filter id="f4">
+      <svg:feSpecularLighting surfaceScale="5" specularConstant="1" 
+                          specularExponent="10" lighting-color="white">
+        <svg:fePointLight x="-5000" y="-10000" z="20000"/>
+      </svg:feSpecularLighting>
+    </svg:filter>
+
+    <svg:filter id="f5">
+      <svg:feColorMatrix values="1 0 0 0 0
+                                 0 1 0 0 0
+                                 0 0 1 0 0
+                                 0 1 0 0 0" style="color-interpolation-filters:sRGB"/>
+    </svg:filter>
+  </svg:svg>
+</body>
+</html>
+

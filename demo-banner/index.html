@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script src="../src/tagvisor.js"></script>
+<script type="text/javascript" src="jquery-min.js"></script>
+<script>
+
+  function start() {
+
+	tv.add($('.slide'));
+	tv.play();
+
+  } 
+
+
+
+</script>
+
+<style>
+#bg { 
+	color:black;
+	position:absolute; left:0; top:0;
+	background-image:  -moz-linear-gradient(top, white, lightblue); 
+	width:640px;
+	height:130px;
+  
+} 
+.viewport { 	
+	-moz-box-shadow:0 0 25px black;	
+	position:absolute;top:0;left:0;
+	width:640px;
+	height:130px;
+	overflow:hidden;
+} 
+
+.slide { 
+	padding:20px;
+	width:600px;
+	height:130px;
+	text-align:center;
+} 
+
+body { 
+	color:white;
+} 
+</style>
+
+</head>
+
+<body onload="start()">
+<div id='bg'></div>
+<div id='viewport' class='viewport' style='margin:auto'>
+<div id='pagetranslate' >
+<div id='pagescale'>
+
+<div class='slide' data-time="2s" data-effect="move" data-duration="3s" >
+</div>
+<div class='slide' data-time="4s" data-effect="move" data-duration="3s" >
+<h1>Transforme a Web em uma Forma mais Animada</h1>
+</div>
+<div class='slide' data-time="6s" data-effect="move" data-duration="3s" >
+<h1>Conheça o projeto TelaSocial</h1>
+</div>
+<div class='slide' data-time="8s" data-effect="move" data-duration="3s" >
+<h1>www.telasocial.com</h1>
+</div>
+</div>
+</div>
+</div>
+
+
+<svg:svg height="0">
+    <svg:filter id="f1">
+      <svg:feGaussianBlur stdDeviation="3"/>
+    </svg:filter>
+  </svg:svg>
+</body>
+</html>
