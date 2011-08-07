@@ -104,17 +104,42 @@ var tv = {
 				if(nextTick > -1) {
 					if(nextTick==this.currentTick) { 
 						var lookUpElement = this.itemsByTicks[this.currentTick];
-						if(lookUpElement) { 
-							var fAction = lookUpElement.getAttribute("data-duration"); 
-							var dur = 2;
-							if(fAction) { 
-								dur=parseInt(fAction);	
+						if(lookUpElement) {  
+
+							var fCommand ="";
+
+							fCommand = lookUpElement.getAttribute("data-exec"); 
+
+							if(fCommand!=null) { 
+							if(fCommand.indexOf('dispatch')>-1) { 
+try { 
+								var str = fCommand.split("dispatch_load('"); 
+								var str1 = str[1].split("'");
+								var url = str1[0];
+								lookUpElement.src=url+"?"+Math.random();
+} catch (i) {  } 
 							} 
-							this.animateNext(lookUpElement,dur);
+							} 
+
+							var fEffect = null; 
+							var fDuration = null;
+							try { fEffect = lookUpElement.getAttribute("data-effect"); } catch (i) { } 
+							try { fDuration = lookUpElement.getAttribute("data-duration"); } catch(i) { } 
+							var dur = 2;
+							if(fDuration != null) { 
+								dur=parseInt(fDuration);	
+							} 
+							if(fEffect == 'dive') { 
+								this.effects_scale(lookUpElement,dur);
+							} 
+							if(fEffect == "fadeout") { 
+								this.effects_fadeOut(lookUpElement,dur);
+							} 
+							if(fEffect == "move") { 
+								this.effects_animateNext(lookUpElement,dur);
+							} 
 							this.counterSequential++;
-							
 						} 
-					
 					} 
 					this.currentTick++;
 					var stampThis = this; 
@@ -142,11 +167,18 @@ var tv = {
 	        }
         	return { left: x, top: y };
 	},
+	
+	effects_fadeOut: function (el, t) { 
+	        el.setAttribute("style","-moz-transition-property: opacity; -moz-transition-duration:"+t+"s;opacity:0");
+	},
 
-	animateNext: function (a,t) { 
+	effects_scale: function (el, t) { 
+	        el.setAttribute("style","-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale(1.2);");
+	},
+
+	effects_animateNext: function (a,t) { 
 
 		var el = this.offset(a);
-
 		var refTranslate = document.getElementById("pagescale");
 		var elRefContainer = this.offset(refTranslate);
 		var x= el.left - elRefContainer.left; 	
