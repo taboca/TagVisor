@@ -8,7 +8,7 @@
 
   function start() {
 
-	tv.add($('.slide'));
+	tv.add($('#animation li'));
 	tv.play();
 
   } 
@@ -48,22 +48,30 @@ body {
 
 </head>
 
+<ul id='animation'>
+<li data-target='slide1' data-time="2s" data-effect="move" data-duration="3s" />
+<li data-target='slide2' data-time="4s" data-effect="move" data-duration="3s" />
+<li data-target='slide3' data-time="6s" data-effect="move" data-duration="3s" />
+<li data-target='slide4' data-time="8s" data-effect="move" data-duration="3s" />
+<li data-target='slide5' data-time="9s" data-effect="dive" data-duration="4s" />
+</ul>
+
 <body onload="start()">
 <div id='bg'></div>
 <div id='viewport' class='viewport' style='margin:auto'>
 <div id='pagetranslate' >
 <div id='pagescale'>
 
-<div class='slide' data-time="2s" data-effect="move" data-duration="3s" >
+<div id='slide1' class='slide' data-time="2s" data-effect="move" data-duration="3s" >
 </div>
-<div class='slide' data-time="4s" data-effect="move" data-duration="3s" >
+<div id='slide2' class='slide' data-time="4s" data-effect="move" data-duration="3s" >
 <h1>Transforme a Web em uma Forma mais Animada</h1>
 </div>
-<div class='slide' data-time="6s" data-effect="move" data-duration="3s" >
+<div id='slide3' class='slide' data-time="6s" data-effect="move" data-duration="3s" >
 <h1>Conheça o projeto TelaSocial</h1>
 </div>
-<div class='slide' data-time="8s" data-effect="move" data-duration="3s" >
-<h1 class='slide' data-time="9s" data-effect="dive" data-duration="4s" >www.telasocial.com</h1>
+<div id='slide4' class='slide' data-time="8s" data-effect="move" data-duration="3s" >
+<h1 id='slide5' class='slide' data-time="9s" data-effect="dive" data-duration="4s" >www.telasocial.com</h1>
 </div>
 </div>
 </div>

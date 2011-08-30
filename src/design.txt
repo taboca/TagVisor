@@ -1,0 +1,117 @@
+Code 
+
+ Events 
+ Handlers/Watchers/Queries to Match 
+ Whic may in turn genrate events
+ Compound events are 
+
+	* * 20 -> clock
+ 
+	clock time(* * *) -> new 
+
+	clock and * * * 
+
+	clock -> new:1
+	* * * -> new:2
+
+	new(x) { 
+		x=1+2 -> new
+	} 
+
+Event manager. All times a new event enters the document, it uses the event name and data
+to find if there is a registered handler, in our case a selector to event detection. When 
+it finds the handler, it should execute the handler's function, which may generate other
+events. Each of our event has unique ID and once processed, they to to a history of events. 
+
+We can also have more than one event to trigger a handler. This operation is a composition
+or a compound event - if you think that a new event will be result of multiple incoming 
+events. So, for example, here is one way to implement thsi: 
+
+* * * { 
+	kick marcio:one; 
+}  
+
+time:12:12:12 { 
+
+} 
+
+clock { 
+	kick marcio:two; 
+} 
+
+
+marcio { 
+	in: one & two; 
+	out: marcio2
+} 
+
+Issues with selectors 
+
+	Wildcard: in order to make the wield card for ranges of values 
+	you would need to generate a lot of selectors to the whole range
+ 	of possibilities. 
+
+
+Cases
+
+	Main rule for events that can apply to elements ( widgets ) amonng 
+	all iframes including nested iframes. 
+
+
+	* * 20 load iframe clock
+
+	* * 25 #clock zoom 
+		internal ( scale ) - insertRule
+
+	* * 30 remove clock 
+
+Cases
+
+ 	For each second, we kick a time stamp event
+  	if someone wants to add something to the current t+1
+	you insert a rule for the t+1. 
+
+	Case, a 30 seconds animation that has t=1 E=1 t=10,E2 and t=20, E3
+	and repeats.
+
+	* * 1 E1
+	* * 10 E2 
+	* * 20 E3 
+ 	
+	time[secs=1] { E1 } time[secs=10] { E2 } time[secs=20] { E3 } 
+
+	Each time event that happens in the timeline DOM storage appears and 
+	goes away, to a history DOM storage, which means processed. 
+
+
+DailyCron 
+ 
+  A heart beat loop ticker system that queries a 
+  data set of rules and applies ( generate events ) 
+ 
+  Temporal Selectors
+  
+  Date, 
+  Time, 
+
+  time[date="20/08/2011"] { 
+     apply-event: 
+  } 
+
+  time[cron="* * *"] { 
+     apply-event: 
+  } 
+
+===
+
+* Insert time-based event at any time
+* Delete time-based events 
+
+Mutation Events
+
+  + Iframe creation ( compatible widget ) 
+  + Iframe destruction ( compatible widget ) 
+  + DOM manipulation
+  + CSS rule insertion / removal 
+
+
