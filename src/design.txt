@@ -1,3 +1,5 @@
+TagVisor is a choreographer for events of animation and page modification in HTML5. It reads instructions, rules, and dispatch operations, such as animations, in a given HTML page, and its children objects, for example  iframes. This library is highly experimental -- use it at your own risk. TagVisor can be used to create live animated experiences for web pages. 
+
 Code 
 
  Events 
