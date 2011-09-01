@@ -6,15 +6,18 @@ HTML page, and its children objects, for example iframes. This library is highly
 experimental -- use it at your own risk. TagVisor can be used to create live animated 
 experiences for web pages.
 
-Exploration and Paradigm: 
+Exploration and Paradigm: Compound Event Handlers
 
-For a given document, there is a stack of handlers, and these can dispatch a new 
-event in the DOM tree if certain conditions associated with the input event values 
-that each of these handlers receives. As an example of an use case, imagine a voting 
-system web page with many input fields. Each input field stores a numeric value and 
-for each of them, there is an event handler. So, for every value mutation in any 
-given field, a class event is generated. This class event can be watched by another 
-event handler that can check if a given criterial is met, for example, the sum of 
+For a given document, there is a stack of handlers, and these can dispatch new 
+events in the DOM tree, that will be evaluated by a general event handler, that 
+watches certain type of events -- named here a class event. A class event can 
+then check all the values and decide to kick a new, 'compound event', if a desired 
+condition is met based in the input values for the original incoming events. 
+As an example of an use case, imagine a voting system web page with many input 
+fields. Each input field stores a numeric value and for each of them, there 
+is an event handler. So, for every value mutation in any given field, a 
+class event is generated. This class event can be watched by another event 
+handler that can check if a given criterial is met, for example, the sum of 
 all the input fields to be greater than value X. Another case is simply generating 
 another event that has the current sum of all the input values. 
 
@@ -22,7 +25,7 @@ Proposed features:
 
 * Animation and Special Effects for Web Pages, using an event model
 * Develops the Concept of Stream-driven event handling to enhance browsing session
-* Focuses in iime and animation
+* Focuses in time and animation
 * Focuses in compound event handlers as means to trigger new events, and action 
   based in many initial events.  
 * Iframes support 
