@@ -18,27 +18,21 @@ Code
 		x=1+2 -> new
 	} 
 
-Event manager. All times a new event enters the document, it uses the event name and data
-to find if there is a registered handler, in our case a selector to event detection. When 
-it finds the handler, it should execute the handler's function, which may generate other
-events. Each of our event has unique ID and once processed, they to to a history of events. 
+Event manager. 
+
+The event manager is responsible for watching incoming events in a document tree. It uses the event name and data to find if there is a registered handler, in our case, this is defined by a a selector.  When it finds this handler, it should execute the handler's function, which may generate other events. Each event has an unique ID and once processed, they are to be moved to a a data store that represents the history of events. 
 
 We can also have more than one event to trigger a handler. This operation is a composition
 or a compound event - if you think that a new event will be result of multiple incoming 
-events. So, for example, here is one way to implement thsi: 
+events. So, for example, here is one way to implement this:
 
 * * * { 
 	kick marcio:one; 
 }  
 
-time:12:12:12 { 
-
-} 
-
 clock { 
 	kick marcio:two; 
 } 
-
 
 marcio { 
 	in: one & two; 
@@ -47,7 +41,7 @@ marcio {
 
 Issues with selectors 
 
-	Wildcard: in order to make the wield card for ranges of values 
+	Wildcard: in order to make the wild card for ranges of values 
 	you would need to generate a lot of selectors to the whole range
  	of possibilities. 
 
