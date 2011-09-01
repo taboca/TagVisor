@@ -8,11 +8,11 @@ experiences for web pages.
 
 Exploration and Paradigm: Compound Event Handlers
 
-For a given document, there is a stack of handlers, and these can dispatch new 
-events in the DOM tree, that will be evaluated by a general event handler, that 
-watches certain type of events -- named here a class event. A class event can 
-then check all the values and decide to kick a new, 'compound event', if a desired 
-condition is met based in the input values for the original incoming events. 
+For a given document, there is a stack of event handlers associated with input fields. 
+These dispatch new events in the DOM tree, that can be evaluated by a general event 
+handler, that watches certain type of events -- named here a class event. A 
+class event can then check all the values and decide to kick a new, 'compound event', 
+if a desired condition is met based in the input values for the original incoming events. 
 As an example of an use case, imagine a voting system web page with many input 
 fields. Each input field stores a numeric value and for each of them, there 
 is an event handler. So, for every value mutation in any given field, a 
