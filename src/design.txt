@@ -1,24 +1,21 @@
-TagVisor is a choreographer for events of animation and page modification in HTML5. It reads instructions, rules, and dispatch operations, such as animations, in a given HTML page, and its children objects, for example  iframes. This library is highly experimental -- use it at your own risk. TagVisor can be used to create live animated experiences for web pages. 
+Introduction
 
-Code 
+TagVisor is a choreographer for events of animation and page modification in HTML5. It reads instructions, rules, and dispatch operations, such as animations, in a given HTML page, and its children objects, for example  iframes. This library is highly experimental -- use it at your own risk. TagVisor can be used to create live animated experiences for web pages.
 
- Events 
- Handlers/Watchers/Queries to Match 
- Whic may in turn genrate events
- Compound events are 
+Exploration and Paradigm: 
+For  a given document, there is a stack of handlers, and these can dispatch a  new event in the DOM tree if certain conditions associated with the  input event values that each of these handlers receives. As an example  of a use case, imagine a voting system web page with many input fields.  Each input field stores a numeric value and for each of them, there is  an event handler. So, for every value mutation in any given field, a  class event is generated. This class event can be watched by another  event handler that can check if a given criterial is met, for example,  the sum of all the input fields to be greater than value X. Another case  is simply generating another event that has the current sum of all the  input values. 
+Proposed features: 
 
-	* * 20 -> clock
- 
-	clock time(* * *) -> new 
+* Animation and Special Effects for Web Pages
+* Develops the Concept of Stream-driven events to Govern Browsing Session
+* Focuses in Time and Animation
+* Events Model for Mutation 
+* Iframes support 
+* DOM Mutation Templates support 
+* History and User-based Control to Modify Content
+* DOM Node to JS Object Reflection ( Core ) 
 
-	clock and * * * 
 
-	clock -> new:1
-	* * * -> new:2
-
-	new(x) { 
-		x=1+2 -> new
-	} 
 
 Event manager. 
 
