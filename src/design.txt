@@ -20,15 +20,15 @@ another event that has the current sum of all the input values.
 
 Proposed features: 
 
-* Animation and Special Effects for Web Pages
-* Develops the Concept of Stream-driven events to Govern Browsing Session
-* Focuses in Time and Animation
-* Events Model for Mutation 
+* Animation and Special Effects for Web Pages, using an event model
+* Develops the Concept of Stream-driven event handling to enhance browsing session
+* Focuses in iime and animation
+* Focuses in compound event handlers as means to trigger new events, and action 
+  based in many initial events.  
 * Iframes support 
 * DOM Mutation Templates support 
 * History and User-based Control to Modify Content
 * DOM Node to JS Object Reflection ( Core ) 
-
 
 High level: 
 * Clock generator/governance and tick event generator
