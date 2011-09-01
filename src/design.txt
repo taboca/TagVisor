@@ -17,7 +17,7 @@ the original incoming events.  As an example of an use case, imagine a voting
 system web page with many input fields. Each input field stores a numeric value 
 and for each of them, there is an event handler. So, for every value mutation 
 in any given field, a class event is generated. This class event can be watched 
-by another event handler that can check if a given criterial is met, for example, 
+by another event handler that can check if a given criteria is met, for example, 
 the sum of all the input fields to be greater than value X. Another case is 
 simply generating another event that has the current sum of all the input values. 
 
