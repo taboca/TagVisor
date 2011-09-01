@@ -2,21 +2,21 @@ Introduction
 
 TagVisor is a choreographer for events of animation and page modification in HTML5. 
 It reads instructions, rules, and dispatch operations, such as animations, in a given
-HTML page, and its children objects, for example  iframes. This library is highly 
+HTML page, and its children objects, for example iframes. This library is highly 
 experimental -- use it at your own risk. TagVisor can be used to create live animated 
 experiences for web pages.
 
 Exploration and Paradigm: 
 
-For  a given document, there is a stack of handlers, and these can dispatch a  new 
-event in the DOM tree if certain conditions associated with the  input event values 
-that each of these handlers receives. As an example  of a use case, imagine a voting 
-system web page with many input fields.  Each input field stores a numeric value and 
-for each of them, there is  an event handler. So, for every value mutation in any 
-given field, a  class event is generated. This class event can be watched by another 
-event handler that can check if a given criterial is met, for example,  the sum of 
-all the input fields to be greater than value X. Another case  is simply generating 
-another event that has the current sum of all the  input values. 
+For a given document, there is a stack of handlers, and these can dispatch a new 
+event in the DOM tree if certain conditions associated with the input event values 
+that each of these handlers receives. As an example of an use case, imagine a voting 
+system web page with many input fields. Each input field stores a numeric value and 
+for each of them, there is an event handler. So, for every value mutation in any 
+given field, a class event is generated. This class event can be watched by another 
+event handler that can check if a given criterial is met, for example, the sum of 
+all the input fields to be greater than value X. Another case is simply generating 
+another event that has the current sum of all the input values. 
 
 Proposed features: 
 
@@ -34,31 +34,31 @@ High level:
 * Clock generator/governance and tick event generator
 * Date/Hour generator for Hour and date events generation 
 Low Level: 
-*    Reflection Objects -- a reflection object is a JavaScript object that    is associated with a node creation/removal/subtree update in the DOM.    This is inspired in binding languages; 
-*   DOM mutation history and Session Management -- to allow a page to undo   animation if desired -- this is in a way inspired in the concept of  DOM  tree session ( Browser session restore ) but it is meant for the  level  of DOM nodes and thir symmetric object that are in execution
+*  Reflection Objects -- a reflection object is a JavaScript object that  is associated with a node creation/removal/subtree update in the DOM.  This is inspired in binding languages; 
+*  DOM mutation history and Session Management -- to allow a page to undo  animation if desired -- this is in a way inspired in the concept of DOM tree session ( Browser session restore ) but it is meant for the level of DOM nodes and thir symmetric object that are in execution
 Current ( old ) architecture: 
-    <li data-time='2s' action="alert(1)" /> is an example of a event   handler. We currently load all these action events and create a map of   events as an index = hash table. Then we start a clock ticker which  will  check the hash table using key being current sec. When there  is  a  match, then we read the original <li /> tag and kick resulting   effects. 
+  <li data-time='2s' action="alert(1)" /> is an example of a event  handler. We currently load all these action events and create a map of  events as an index = hash table. Then we start a clock ticker which will check the hash table using key being current sec. When there is a match, then we read the original <li /> tag and kick resulting  effects. 
 Changes in the architecture: 
-The   new architecture proposes that selectors whould monitor a live  document  that represents the events happening in a document. So, for  example, 
+The  new architecture proposes that selectors whould monitor a live document that represents the events happening in a document. So, for example, 
 <live>
-  <start>
-  </start>
+ <start>
+ </start>
 </live>
 When <start /> happens in this live document, then we should be able to detect using a selector: 
 start { } 
 We should be able to maintain a state, in the tag store as well using functions. So in a way this is like XBL. For example:
 start { 
-    children: tick; 
-    content: constructor() { this.tick=0; this.children.tick=this.tick;
-    } 
+  children: tick; 
+  content: constructor() { this.tick=0; this.children.tick=this.tick;
+  } 
 So when live start happens, it would create a constructor that would maintain the live start tick = "0"; 
 This would help us to run other selectors such as : 
 live start tick[time='2'] { 
-         content: function () { 
-             animate("panel3","scale");
-             } 
-    } 
-      
+     content: function () { 
+       animate("panel3","scale");
+       } 
+  } 
+   
 How to map the current code to the new code? 
 For every DOM mutation in the live tree we call a querier. So, for example, if 
 <live><start><tick time='x' /></start></live> 
@@ -80,28 +80,28 @@ el = stack['live start tick'].getAttribute("s")==2
 How to map the event rules
 Rule('live start', ticker); 
 RuleAttr('live start tick','s','2', function () { 
-      animate("panel1","2","move");
-    });
+   animate("panel1","2","move");
+  });
 RuleAttr("live start tick","s","60", function () { 
-        remove("live start");
-        insert("live start");
-    });
+    remove("live start");
+    insert("live start");
+  });
 Case is to : 
 1) Create 
 1 -> 2 ( hour 1 + hour 2 } 
 1 -> 2 -> hour 1 { 
-      tick s
-    }      
+   tick s
+  }   
 1 -> 2 -> hour 2 { 
-      wait 1 hr { 
-              removeRule ("1->2") 
-              removeNode(1>2>hour1)
-          } 
-    } 
+   wait 1 hr { 
+       removeRule ("1->2") 
+       removeNode(1>2>hour1)
+     } 
+  } 
 
 Event manager. 
 
-The event manager is responsible for watching incoming events in a document tree. It uses the event name and data to find if there is a registered handler, in our case, this is defined by a a selector.  When it finds this handler, it should execute the handler's function, which may generate other events. Each event has an unique ID and once processed, they are to be moved to a a data store that represents the history of events. 
+The event manager is responsible for watching incoming events in a document tree. It uses the event name and data to find if there is a registered handler, in our case, this is defined by a a selector. When it finds this handler, it should execute the handler's function, which may generate other events. Each event has an unique ID and once processed, they are to be moved to a a data store that represents the history of events. 
 
 We can also have more than one event to trigger a handler. This operation is a composition
 or a compound event - if you think that a new event will be result of multiple incoming 
@@ -109,7 +109,7 @@ events. So, for example, here is one way to implement this:
 
 * * * { 
 	kick marcio:one; 
-}  
+} 
 
 clock { 
 	kick marcio:two; 
@@ -143,7 +143,7 @@ Cases
 Cases
 
  	For each second, we kick a time stamp event
-  	if someone wants to add something to the current t+1
+ 	if someone wants to add something to the current t+1
 	you insert a rule for the t+1. 
 
 	Case, a 30 seconds animation that has t=1 E=1 t=10,E2 and t=20, E3
@@ -161,21 +161,21 @@ Cases
 
 DailyCron 
  
-  A heart beat loop ticker system that queries a 
-  data set of rules and applies ( generate events ) 
+ A heart beat loop ticker system that queries a 
+ data set of rules and applies ( generate events ) 
  
-  Temporal Selectors
-  
-  Date, 
-  Time, 
+ Temporal Selectors
+ 
+ Date, 
+ Time, 
 
-  time[date="20/08/2011"] { 
-     apply-event: 
-  } 
+ time[date="20/08/2011"] { 
+   apply-event: 
+ } 
 
-  time[cron="* * *"] { 
-     apply-event: 
-  } 
+ time[cron="* * *"] { 
+   apply-event: 
+ } 
 
 ===
 
@@ -184,9 +184,9 @@ DailyCron
 
 Mutation Events
 
-  + Iframe creation ( compatible widget ) 
-  + Iframe destruction ( compatible widget ) 
-  + DOM manipulation
-  + CSS rule insertion / removal 
+ + Iframe creation ( compatible widget ) 
+ + Iframe destruction ( compatible widget ) 
+ + DOM manipulation
+ + CSS rule insertion / removal 
 
 
