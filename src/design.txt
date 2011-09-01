@@ -16,6 +16,74 @@ Proposed features:
 * DOM Node to JS Object Reflection ( Core ) 
 
 
+High level: 
+* Clock generator/governance and tick event generator
+* Date/Hour generator for Hour and date events generation 
+Low Level: 
+*    Reflection Objects -- a reflection object is a JavaScript object that    is associated with a node creation/removal/subtree update in the DOM.    This is inspired in binding languages; 
+*   DOM mutation history and Session Management -- to allow a page to undo   animation if desired -- this is in a way inspired in the concept of  DOM  tree session ( Browser session restore ) but it is meant for the  level  of DOM nodes and thir symmetric object that are in execution
+Current ( old ) architecture: 
+    <li data-time='2s' action="alert(1)" /> is an example of a event   handler. We currently load all these action events and create a map of   events as an index = hash table. Then we start a clock ticker which  will  check the hash table using key being current sec. When there  is  a  match, then we read the original <li /> tag and kick resulting   effects. 
+Changes in the architecture: 
+The   new architecture proposes that selectors whould monitor a live  document  that represents the events happening in a document. So, for  example, 
+<live>
+  <start>
+  </start>
+</live>
+When <start /> happens in this live document, then we should be able to detect using a selector: 
+start { } 
+We should be able to maintain a state, in the tag store as well using functions. So in a way this is like XBL. For example:
+start { 
+    children: tick; 
+    content: constructor() { this.tick=0; this.children.tick=this.tick;
+    } 
+So when live start happens, it would create a constructor that would maintain the live start tick = "0"; 
+This would help us to run other selectors such as : 
+live start tick[time='2'] { 
+         content: function () { 
+             animate("panel3","scale");
+             } 
+    } 
+      
+How to map the current code to the new code? 
+For every DOM mutation in the live tree we call a querier. So, for example, if 
+<live><start><tick time='x' /></start></live> 
+Being the mutation: <tick time='x' /> is: 
+* New node
+* attribute modified 
+* subtree modified 
+* Node removed
+New Node: 
+{ rule: live start tick { construct Ticker } } 
+stack["live start tick"]=new functions_hash["live start tick"] 
+stack["live start tick'].constructor(Node); 
+Node removed: 
+stack['live start tick'].clearTimers();
+stack['live start tick']= null;
+Attr modified: 
+{ rule: live start tick[s=2] { animate("something","to") } } 
+el = stack['live start tick'].getAttribute("s")==2 
+How to map the event rules
+Rule('live start', ticker); 
+RuleAttr('live start tick','s','2', function () { 
+      animate("panel1","2","move");
+    });
+RuleAttr("live start tick","s","60", function () { 
+        remove("live start");
+        insert("live start");
+    });
+Case is to : 
+1) Create 
+1 -> 2 ( hour 1 + hour 2 } 
+1 -> 2 -> hour 1 { 
+      tick s
+    }      
+1 -> 2 -> hour 2 { 
+      wait 1 hr { 
+              removeRule ("1->2") 
+              removeNode(1>2>hour1)
+          } 
+    } 
 
 Event manager. 
 
