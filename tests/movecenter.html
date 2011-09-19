@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script src="../src/tagvisor.js"></script>
+<script type="text/javascript" src="jquery-min.js"></script>
+<script>
+
+  function start() {
+
+	tv.setup();
+	tv.add($('#animation li'));
+	tv.play();
+
+  } 
+
+</script>
+
+<style>
+#bg { 
+	color:black;
+	position:absolute; left:0; top:0;
+	background-image:  -moz-linear-gradient(top, white, lightblue); 
+	width:640px;
+	height:130px;
+  
+} 
+.viewport { 	
+	-moz-box-shadow:0 0 25px black;	
+	position:absolute;top:0;left:0;
+	width:640px;
+	height:130px;
+	border:1px solid red;
+} 
+
+.slide { 
+	text-align:center;
+	padding:20px;
+} 
+
+.outerslide { 
+	width:600px;
+	height:130px;
+} 
+
+body { 
+	color:gray;
+} 
+</style>
+
+</head>
+
+<ul id='animation'>
+<li data-target='slide1' data-time="2s" data-effect="movecenter" data-duration="3s" />
+<li data-target='slide2' data-time="4s" data-effect="movecenter" data-duration="3s" />
+<li data-target='slide3' data-time="6s" data-effect="movecenter" data-duration="3s" />
+</ul>
+
+<body onload="start()">
+<div id='bg'></div>
+<div id='viewport' class='viewport' style='margin:auto'>
+<div id='pagetranslate' >
+<div id='pagescale'>
+
+<div class='outerslide'>
+<div id='slide1' class='slide' data-time="2s" data-effect="move" data-duration="3s" >
+Teste1
+</div>
+</div>
+
+<div class='outerslide'>
+<div id='slide2' class='slide' data-time="4s" data-effect="move" data-duration="3s" >
+Teste2
+</div>
+</div>
+<div class='outerslide'>
+<div id='slide3' class='slide' style='width:200px' data-time="6s" data-effect="move" data-duration="3s" >
+<h1>Test3</h1>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>
