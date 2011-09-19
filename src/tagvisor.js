@@ -52,6 +52,8 @@ var tv = {
 		inlinestyle.setAttribute("rel","stylesheet");
 		inlinestyle.setAttribute("href","data:text/css,"+ escape(this.dataStyle));
 		document.getElementsByTagName("head")[0].appendChild(inlinestyle);
+		this.viewLeft = document.getElementById("viewport").offsetLeft;
+		this.viewTop =  document.getElementById("viewport").offsetTop;
 		this.viewWidth = document.getElementById("viewport").offsetWidth;
 		this.viewHeight =  document.getElementById("viewport").offsetHeight;
 	}, 
@@ -204,11 +206,11 @@ try {
 		var x = 0; 
 		var y = 0;
 		if(!center) { 
-			var x= el.left;
-			var y= el.top;
+			var x= el.left - this.viewLeft;
+			var y= el.top - this.viewTop;
 		} else { 
-			var x= el.left - parseInt((this.viewWidth - parseInt(a.offsetWidth))/2);	
-			var y= el.top - parseInt((this.viewHeight - parseInt(a.offsetHeight))/2);	
+			var x= el.left - this.viewLeft - parseInt((this.viewWidth - parseInt(a.offsetWidth))/2);	
+			var y= el.top - this.viewTop - parseInt((this.viewHeight - parseInt(a.offsetHeight))/2);	
 		} 
 		var ww = a.offsetWidth;
 		var www = window.innerWidth;		        
