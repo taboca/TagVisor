@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script src="../src/tagvisor.js"></script>
+<script type="text/javascript" src="jquery-min.js"></script>
+<script>
+
+  function start() {
+
+	tv.setup();
+	tv.add($('#animation li'));
+	tv.play();
+
+  } 
+
+</script>
+
+<style>
+	
+	html { background-color:black; } 
+
+	#animation { 
+		display:none;
+	} 	
+
+	.viewport { 	
+		margin:auto;
+		background:white;
+		overflow:hidden;
+		width:640px;
+		height:130px;
+	} 
+
+	#pagetranslate { 
+		width:2000px;
+	} 
+	.slide { 
+		text-align:center;
+		margin:20px;
+		color:white;
+		padding:1em;
+		line-height:4em;
+	} 
+
+	body { 
+		color:gray;
+	} 
+	</style>
+
+	</head>
+
+	<ul id='animation'>
+
+<li data-target='slide1' data-time="2s" data-effect="scalefit" data-duration="3s" />
+<li data-target='slide2' data-time="6s" data-effect="scalefit" data-duration="3s" />
+<li data-target='slide3' data-time="10s" data-effect="scalefit" data-duration="3s" />
+<li data-target='slide4' data-time="14s" data-effect="scalefit" data-duration="3s" />
+<li data-target='slide5' data-time="17s" data-effect="scalefit" data-duration="3s" />
+<li data-target='slide6' data-time="20s" data-effect="scalefit" data-duration="3s" />
+<li data-target='slide7' data-time="23s" data-effect="scalefit" data-duration="3s" />
+
+</ul>
+
+<body onload="start()">
+<div id='viewport' class='viewport' >
+<div id='pagetranslate' >
+<div id='pagescale'>
+
+<span id='slide1' class='slide' style='background:yellow'> Taboca Labs </span>
+<span id='slide3' class='slide' style='background:blue'> HTML5 </span>
+<span id='slide6' class='slide' style='background:cyan'> powered by</span>
+<br />
+<span id='slide7' class='slide' style='background:gray'> TelaSocial TagVisor </span>
+<span id='slide4' class='slide' style='background:green'> which moves</span>
+<span id='slide5' class='slide' style='background:black'> like a movie </span>
+<span id='slide2' class='slide' style='background:red'> presents </span>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>
