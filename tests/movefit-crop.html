@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script src="../src/tagvisor.js"></script>
+<script type="text/javascript" src="jquery-min.js"></script>
+<script>
+
+  function start() {
+
+	tv.setup();
+	tv.add($('#animation li'));
+	tv.play();
+
+  } 
+
+</script>
+
+<style>
+	
+	html { background-color:black; } 
+
+	#animation { 
+		display:none;
+	} 	
+
+	.viewport { 	
+		margin:auto;
+		background:white;
+		overflow:hidden;
+		width:640px;
+		height:130px;
+	} 
+
+	.slide { 
+		text-align:center;
+		padding:20px;
+		border:10px solid blue;
+	} 
+
+	.outerslide { 
+		width:600px;
+		height:130px;
+	} 
+
+	body { 
+		color:gray;
+	} 
+	</style>
+
+	</head>
+
+	<ul id='animation'>
+
+<li data-target='slide1' data-time="2s" data-effect="scalefit" data-duration="3s" />
+<li data-target='slide2' data-time="5s" data-effect="scalefit" data-duration="3s" />
+<li data-target='slide3' data-time="8s" data-effect="scalefit" data-duration="3s" />
+<li data-target='slide3' data-time="11s" data-effect="scalefit" data-duration="3s" />
+
+</ul>
+
+<body onload="start()">
+<div id='viewport' class='viewport' >
+<div id='pagetranslate' >
+<div id='pagescale'>
+
+<div class='outerslide'>
+<span id='slide1' class='slide'  >
+DIV has a bit of text 
+</span>
+</div>
+
+<div class='outerslide'>
+<span id='slide2' class='slide' >
+This other element is here with its own width and height as you can see
+</span>
+</div>
+<div class='outerslide'>
+<div id='slide3' class='slide' style='width:200px'  >
+<h1>And Finally we are here 200 pix width</h1>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>
