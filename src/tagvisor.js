@@ -232,12 +232,12 @@ try {
 		var y= el.top -this.viewTop +  parseInt( parseInt(a.offsetHeight)/2);	
 
 //		document.getElementById("pagescale").style.mozTransformOrigin= x + "px " + y + "px";
-	        var str = "-webkit-transform-origin: " + x + "px " + y + "px;-webkit-transition-property: -webkit-transform; -webkit-transition-duration:"+t+"s;-webkit-transform:scale("+sW+");";
-	        str +=   "-moz-transform-origin: " + x + "px " + y + "px;-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sW+");";
+	        var str =   "-moz-transform-origin: " + x + "px " + y + "px;-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sW+");";
+	        str = "-webkit-transform-origin: " + x + "px " + y + "px;-webkit-transition-property: -webkit-transform; -webkit-transition-duration:"+t+"s;-webkit-transform:scale("+sW+");";
 
 	        d.getElementById("pagescale").setAttribute("style",str);
 	        //d.getElementById("pagescale").setAttribute("style","-moz-transform-origin: " + x + "px " + y + "px;-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sW+");");
-	        d.getElementById("pagescale").setAttribute("style","-moz-transform-origin: " + x + "px " + y + "px;-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sW+");");
+	        //d.getElementById("pagescale").setAttribute("style","-moz-transform-origin: " + x + "px " + y + "px;-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sW+");");
 
 //	        d.getElementById("pagescale").setAttribute("style","-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sW+");");
 
