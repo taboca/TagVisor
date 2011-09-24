@@ -56,10 +56,13 @@ var tv = {
 		inlinestyle.setAttribute("rel","stylesheet");
 		inlinestyle.setAttribute("href","data:text/css,"+ escape(this.dataStyle));
 		document.getElementsByTagName("head")[0].appendChild(inlinestyle);
-		this.viewLeft = document.getElementById("viewport").offsetLeft;
-		this.viewTop =  document.getElementById("viewport").offsetTop;
-		this.viewWidth = document.getElementById("viewport").offsetWidth;
-		this.viewHeight =  document.getElementById("viewport").offsetHeight;
+	}, 
+
+	refreshView: function (d) { 
+		this.viewLeft = d.getElementById("viewport").offsetLeft;
+		this.viewTop =  d.getElementById("viewport").offsetTop;
+		this.viewWidth = d.getElementById("viewport").offsetWidth;
+		this.viewHeight =  d.getElementById("viewport").offsetHeight;
 	}, 
 
 	sortArray: function (arr){
@@ -206,10 +209,8 @@ try {
 		var y = 0;
 		var center = true;
 
-		this.viewLeft = document.getElementById("viewport").offsetLeft;
-		this.viewTop =  document.getElementById("viewport").offsetTop;
-		this.viewWidth = document.getElementById("viewport").offsetWidth;
-		this.viewHeight =  document.getElementById("viewport").offsetHeight;
+		this.refreshView(d); 
+
 		var el = this.offset(a);
 
 		if(!center) { 
@@ -263,6 +264,7 @@ try {
 		var el = this.offset(a);
 		var x = 0; 
 		var y = 0;
+		this.refreshView(d);
 		if(!center) { 
 			var x= el.left - this.viewLeft;
 			var y= el.top - this.viewTop;
