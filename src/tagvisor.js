@@ -228,12 +228,24 @@ try {
 		var sW = this.viewWidth/a.offsetWidth;
 		var sH = this.viewHeight/a.offsetHeight;
 
+		var sC = 0;
+		
+		// we check if the scaled is overflow, then we scale in by vertical if so
+	
 		var x= el.left - this.viewLeft +  parseInt( parseInt(a.offsetWidth)/2);	
 		var y= el.top -this.viewTop +  parseInt( parseInt(a.offsetHeight)/2);	
 
+		var probeHeight = a.offsetHeight*sW;
+		if(probeHeight<=this.viewHeight) { 
+			sC = sW ;
+		} 
+		else { 
+		 sC = sH;
+		} 
+	
 //		document.getElementById("pagescale").style.mozTransformOrigin= x + "px " + y + "px";
-	        var str =   "-moz-transform-origin: " + x + "px " + y + "px;-moz-transition-property: -moz-transform, -moz-transform-origin; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sW+");";
-	        str += "-webkit-transform-origin: " + x + "px " + y + "px;-webkit-transition-property: -webkit-transform, -webkit-transform-origin; -webkit-transition-duration:"+t+"s;-webkit-transform:scale("+sW+");";
+	        var str =   "-moz-transform-origin: " + x + "px " + y + "px;-moz-transition-property: -moz-transform, -moz-transform-origin; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sC+");";
+	        str += "-webkit-transform-origin: " + x + "px " + y + "px;-webkit-transition-property: -webkit-transform, -webkit-transform-origin; -webkit-transition-duration:"+t+"s;-webkit-transform:scale("+sC+");";
 
 	        d.getElementById("pagescale").setAttribute("style",str);
 	        //d.getElementById("pagescale").setAttribute("style","-moz-transform-origin: " + x + "px " + y + "px;-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sW+");");
