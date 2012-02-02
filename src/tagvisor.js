@@ -163,6 +163,9 @@ try {
 							if(fEffect == "fadeout") { 
 								this.effects_fadeOut(targetElement,dur);
 							} 
+							if(fEffect == "flip3d") { 
+								this.effects_flip3d(targetElement,dur);
+							} 
 							if(fEffect == "move") { 
 								this.effects_animateNext(targetElement, currDoc,dur, false);
 							} 
@@ -203,7 +206,12 @@ try {
 	        el.setAttribute("style","-moz-transition-property: opacity; -moz-transition-duration:"+t+"s;opacity:0");
 	},
 
+	effects_flip3d: function (el, t) { 
+	        el.setAttribute("style","-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform: perspective( 400px ) rotateY(360deg);");
+	},
+
 	effects_scale: function (a, t, d) { 
+
 
 		var x = 0; 
 		var y = 0;
