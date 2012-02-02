@@ -1,6 +1,15 @@
-## Welcome To Taboca TagVisor - the JS include that Transforms Web Pages in Presentations
+## Welcome To Taboca TagVisor - the JS include that Transforms Web Pages in Presentations using HTML5 stuff
 
-[Check live demos here](http://www.taboca.com/p/tagvisor).
+[Check live demos here](http://taboca.github.com/TagVisor).
+
+## Example of how the animation is described: 
+
+    <ul id='animation'>
+      <li data-target='slide1' data-time="2s" data-effect="scalefit" data-duration="3s" />
+    </ul>
+
+
+So slide1 is a DIV, for example. 
 
 ## LICENSE
 
