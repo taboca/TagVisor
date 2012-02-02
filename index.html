@@ -1,1 +1,131 @@
-My GitHub Page
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
+<head>
+<title>TagVisor.js Demonstration</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href='http://fonts.googleapis.com/css?family=Amethysta' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="lib/jquery-min.js"></script>
+<script type="text/javascript" src="lib/tagvisor.js"></script>
+<script>
+
+  function start() {
+
+	tv.setup('width:800px;height:600px;overflow:hidden');
+	tv.add($('#animation li'));
+	tv.play();
+
+  } 
+
+</script>
+
+<style>
+	
+.header, .footer { 
+	color:gray;
+	margin:1em;
+ 	clear:both;
+} 
+html { 
+  font-family: 'Amethysta', serif;
+} 
+
+#animation { 
+  display:none;
+} 	
+
+.viewport { 	
+  margin:auto;
+  width:844px;
+  background:white;
+} 
+
+.slide { 
+  text-align:left;
+  padding:10px;
+  width:380px;
+  min-height:230px;
+  background-color:#eee;
+  -moz-border-radius-topleft:25px;
+  -moz-border-radius-bottomright:25px;
+  margin:10px;
+} 
+
+.big { 
+  font-size:32px;
+} 
+#slide1 { 
+  font-size:120%;
+} 
+
+.hgrid { 
+   float:left;
+   display:inline-block;
+} 
+
+.vgrid { 
+  clear:both;
+  width:844px;
+  text-align:center;
+} 
+
+</style>
+
+</head>
+
+<body onload="">
+
+<ul id='animation'>
+  <li data-target='slide1' data-time="1s" data-effect="scalefit" data-duration="3s" />
+  <li data-target='slide2' data-time="5s" data-effect="scalefit" data-duration="3s" />
+  <li data-target='slide3' data-time="8s" data-effect="scalefit" data-duration="3s" />
+  <li data-target='slide4' data-time="12s" data-effect="scalefit" data-duration="3s" />
+  <li data-target='slide5' data-time="16s" data-effect="scalefit" data-duration="3s" />
+  <li data-target='slide5' data-time="17s" data-effect="flip3d" data-duration="3s" />
+  <li data-target='pagescale' data-time="20s" data-effect="scalefit" data-duration="3s" />
+  <!--<li data-target='slide3' data-time="9s" data-effect="flip3d" data-duration="3s" />
+-->
+</ul>
+
+<div id='viewport' class='viewport' >
+<div id='pagetranslate' >
+<div id='pagescale'>
+
+<div class='header' style='text-align:center'>
+
+<a href='javascript:' onclick='start()'>Click here to make this page in couch-o-matic mode</a>
+</div>
+<div class='vgrid'>
+<div class='hgrid slide' id='slide1' style='text-align:center'>
+
+<div id='slide2'style='font-size:70px;text-shadow:0 0 10px black'>TagVisor.js</div> 
+  by Taboca and TelaSocial Labs. TagVisor first release was featured as part of a devDerby demonstration — <a href='https://developer.mozilla.org/en-US/demos/detail/conductor'>conductor</a>
+
+
+</div>
+
+
+<div id='slide3' class='hgrid slide big' >
+
+We are here to help you transform your web pages into animation mode preserving the existing markup! 
+</div>
+</div>
+
+<div class='vgrid'>
+<div id='slide4' class='hgrid slide big'>
+You can add a few animation rules to your web page and you have this nice sliding effect.
+</div>
+<div id='slide5' class='hgrid slide big'>
+And 3D also works, if you have a newer browser but it works anyways if CSS 3D transformation is not in place. 
+</div>
+</div>
+
+<div class='footer'>
+<a href='https://github.com/taboca/TagVisor'>TagVisor</a> is a JavaScript library that can turn your web page into animation mode without extra markup. You can preserve the page as it is and you can tell stories on top of them. To fork the project in GitHub or to find samples please use the <a href='https://github.com/taboca/TagVisor'>Github project page</a>. 
+</div>
+
+</div>
+</div>
+</div>
+
+
+</body>
+</html>
