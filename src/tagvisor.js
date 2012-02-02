@@ -45,16 +45,17 @@ var tv = {
 	viewHeight: null, 
 	itemsByTicks: new Array(),
 	sortedItems: new Array(),
-	dataStyle: ".slide { position:relative; } ", 
+	dataStyle: ".slide { position:relative; }  ", 
 
 	dumpTransform: function (property) { 
 		return prop+";-ms-"+prop+";-webkit-"+prop+";-moz-"+prop+";-o-"+prop+";";
 	},
 
-	setup: function () { 
+	setup: function (viewportAttributes) { 
+		var dataStyle = this.dataStyle + "#viewport { " + viewportAttributes + "} #pagescale { width:1200px; } ";
 		var inlinestyle = document.createElement('link');
 		inlinestyle.setAttribute("rel","stylesheet");
-		inlinestyle.setAttribute("href","data:text/css,"+ escape(this.dataStyle));
+		inlinestyle.setAttribute("href","data:text/css,"+ escape(dataStyle));
 		document.getElementsByTagName("head")[0].appendChild(inlinestyle);
 	}, 
 
@@ -181,6 +182,8 @@ try {
 
 				} else { 
 					//end
+	
+					this.playMode = false;
 				} 
 	
 			} catch (i) { 
@@ -212,13 +215,10 @@ try {
 
 	effects_scale: function (a, t, d) { 
 
-
 		var x = 0; 
 		var y = 0;
 		var center = true;
-
 		this.refreshView(d); 
-
 		var el = this.offset(a);
 
 		if(!center) { 
@@ -229,17 +229,12 @@ try {
 			var y= el.top - this.viewTop - parseInt((this.viewHeight - parseInt(a.offsetHeight))/2);	
 		} 
 	        d.getElementById("pagetranslate").setAttribute("style","-moz-transition-property: -moz-transform; -moz-transform:translate("+-1*x+","+-1*y+"); -moz-transition-duration:"+t+"s; -webkit-transition-property: -webkit-transform; -webkit-transform:translate("+parseInt(-1*x)+"px,"+parseInt(-1*y)+"px); -webkit-transition-duration:"+t+"s; -o-transition-property: -o-transform; -o-transform:translate("+parseInt(-1*x)+"px,"+parseInt(-1*y)+"px); -o-transition-duration:"+t+"s;");
-//	        el.setAttribute("style","-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale(1.2);");
-
 
 		var el = this.offset(a);
-
 		var sW = this.viewWidth/a.offsetWidth;
 		var sH = this.viewHeight/a.offsetHeight;
 
 		var sC = 0;
-		
-		// we check if the scaled is overflow, then we scale in by vertical if so
 	
 		var x= el.left - this.viewLeft +  parseInt( parseInt(a.offsetWidth)/2);	
 		var y= el.top -this.viewTop +  parseInt( parseInt(a.offsetHeight)/2);	
@@ -251,22 +246,10 @@ try {
 		else { 
 		 sC = sH;
 		} 
-	
-//		document.getElementById("pagescale").style.mozTransformOrigin= x + "px " + y + "px";
 	        var str =   "-moz-transform-origin: " + x + "px " + y + "px;-moz-transition-property: -moz-transform, -moz-transform-origin; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sC+");";
 	        str += "-webkit-transform-origin: " + x + "px " + y + "px;-webkit-transition-property: -webkit-transform, -webkit-transform-origin; -webkit-transition-duration:"+t+"s;-webkit-transform:scale("+sC+");";
-
 	        d.getElementById("pagescale").setAttribute("style",str);
-	        //d.getElementById("pagescale").setAttribute("style","-moz-transform-origin: " + x + "px " + y + "px;-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sW+");");
-	        //d.getElementById("pagescale").setAttribute("style","-moz-transform-origin: " + x + "px " + y + "px;-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sW+");");
-
-//	        d.getElementById("pagescale").setAttribute("style","-moz-transition-property: -moz-transform; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sW+");");
-
-
-
 	},
-
-
 	effects_animateNext: function (a,d,t,center) { 
 
 		var el = this.offset(a);
