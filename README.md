@@ -1,8 +1,10 @@
-## Welcome To Taboca TagVisor - the JS include that Transforms Web Pages in Presentations using HTML5 stuff
+## TagVisor.js — 10K code that Enhances a Web Page to Become Couch-o-Matic mode ( animation with HTML5 effects ) 
 
 [Check live demos here](http://taboca.github.com/TagVisor).
 
 ## Example of how the animation is described: 
+
+Imagine a web page with html body and so on. You will need to add tagvisor.js, to put a chunk of markup as the following and make sure you have a div named 'slide1'. For the actual full source code see the ./tests directory.
 
     <ul id='animation'>
       <li data-target='slide1' data-time="2s" data-effect="scalefit" data-duration="3s" />
@@ -16,10 +18,6 @@ This project is an exercise, and a tool, and it is part of a cause. We want to e
 * Annotation to the page should be a sort of separated chunk of data, and not be mixed in the markup. 
 * Perhaps the animated views can be even stored as a link from the document page and not inside the page itself. 
 * More? 
-
- 
-
-So slide1 is a DIV, for example. 
 
 ## LICENSE
 
