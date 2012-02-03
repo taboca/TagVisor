@@ -8,6 +8,16 @@
       <li data-target='slide1' data-time="2s" data-effect="scalefit" data-duration="3s" />
     </ul>
 
+## Is this project part of what? 
+
+This project is an exercise, and a tool, and it is part of a cause. We want to explore if a web page can have multiple views and how users can tell ( annotate ) their views about web pages. This work also wants to explore how annotated experiences can enhance web pages so it becomes easier to visualize and learn web page content in different ways. Perhaps web pages can become also frameworks for learning and for interaction. Perhaps we can also stumble in unexpected learnings here. In order to explore this we want to use some principles ( these are not strict but some current guide and motivation): 
+
+* Keep the markup almost intact, the best we can 
+* Annotation to the page should be a sort of separated chunk of data, and not be mixed in the markup. 
+* Perhaps the animated views can be even stored as a link from the document page and not inside the page itself. 
+* More? 
+
+ 
 
 So slide1 is a DIV, for example. 
 
