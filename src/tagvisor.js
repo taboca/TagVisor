@@ -43,6 +43,7 @@ var tv = {
 	ticksSerialized: new Array(),
 	viewWidth: null,
 	viewHeight: null, 
+        recordScale: 1,
 	itemsByTicks: new Array(),
 	sortedItems: new Array(),
 	dataStyle: ".slide { position:relative; }  ", 
@@ -183,6 +184,12 @@ try {
 							if(fEffect == 'scalefit') { 
 								this.effects_scale(targetElement,dur, currDoc);
 							} 
+							if(fEffect == 'end') { 
+
+							        currDoc.documentElement.setAttribute("style",";overflow:auto;width:auto;height:auto");
+	 				       			currDoc.body.setAttribute("style","");
+								this.playMode = false;
+							}
 							if(fEffect == "fadeout") { 
 								this.effects_fadeOut(targetElement,dur);
 							} 
@@ -204,8 +211,7 @@ try {
 
 				} else { 
 					//end
-	
-					this.playMode = false;
+						
 				} 
 	
 			} catch (i) { 
@@ -258,6 +264,7 @@ try {
 		var sW = this.viewWidth/a.offsetWidth;
 		var sH = this.viewHeight/a.offsetHeight;
 
+
 		var sC = 0;
 	
 			var x= el.left;	
@@ -266,12 +273,14 @@ try {
 		var probeHeight = a.offsetHeight*sW;
 		if(probeHeight<=this.viewHeight) { 
 			sC = sW ;
+			this.recordScale = a.offsetWidth/this.viewWidth;
 		} 
 		else { 
 		 sC = sH;
+		 this.recordScale = a.offsetHeight/this.viewHeight;
 		} 
 	        var str =   "-moz-transition-property: -moz-transform, -moz-transform-origin; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sC+");";
-	        str += "-webkit-transform-origin: " + x + "px " + y + "px;-webkit-transition-property: -webkit-transform, -webkit-transform-origin; -webkit-transition-duration:"+t+"s;-webkit-transform:scale("+sC+");";
+	        str += "-webkit-transition-property: -webkit-transform, -webkit-transform-origin; -webkit-transition-duration:"+t+"s;-webkit-transform:scale("+sC+");";
 	        d.documentElement.setAttribute("style",str);
 	},
 	effects_animateNext: function (a,d,t,center) { 
