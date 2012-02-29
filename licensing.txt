@@ -1,0 +1,2 @@
+./soundcloud is api for soundcloud and not open with the same license of this project
+./lib/jquery* is also jquery – separated from this. 
