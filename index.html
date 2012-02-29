@@ -2,6 +2,7 @@
 <head>
 <title>TagVisor.js Demonstration</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="lib/jquery-min.js"></script>
 <script type="text/javascript" src="lib/tagvisor.js"></script>
 <script>
@@ -18,9 +19,23 @@
 
 <style>
 	
+textarea { 
+  position:absolute;
+  top:10px;left:150px;
+  width:150px; 
+  height:120px; 
+  font-family: 'Kaushan Script', cursive;
+  border-radius:15px; 
+  background-color:#eee;
+  border:0px;
+  padding:3px;
+  overflow:hidden;
+  box-shadow:3px 3px 3px #999;
+} 
+
 .slide { 
-  -moz-border-radius-topleft:25px;
-  -moz-border-radius-bottomright:25px;
+  position:relative;
+  display:inline-block;
   margin:10px;
 } 
  
@@ -30,7 +45,7 @@
 
 </head>
 
-<body onload="">
+<body id='pagescale'>
 
 <ul id='animation'>
   <li data-target='slide1' data-time="1s" data-effect="scalefit" data-duration="3s" />
@@ -45,26 +60,62 @@
   <li data-target='slide9' data-time="38s" data-effect="scalefit" data-duration="3s" />
   <li data-target='slide10' data-time="42s" data-effect="scalefit" data-duration="3s" />
   <li data-target='slide11' data-time="46s" data-effect="scalefit" data-duration="3s" />
-  <li data-target='pagescale' data-time="55s" data-effect="scalefit" data-duration="3s" />
+  <li data-target='pagescale' data-time="50s" data-effect="end" data-duration="3s" />
 </ul>
 
 <div class='header' style='text-align:center'>
 <a href='javascript:' onclick='start()'>Click to start ReJoy.js animation over this static page</a>
 </div>
 
-<img id='slide1' src='images/r1.png' class='slide' />
-<img id='slide2' src='images/r2.png' class='slide' />
-<img id='slide3' src='images/r3.png' class='slide' />
-<img id='slide4' src='images/r4.png' class='slide' />
+<div id='slide1' class='slide' />
+<img src='images/r1.png' />
+ <textarea>
+  HTML IS TOO STUCK BUT KINDA NICE FOR A CRAWLER.  
+ </textarea>
+</div>
+
+<div id='slide2' class='slide' />
+<img src='images/r2.png' />
+ <textarea style='left:200px;width:90px'>
+HUMNMN...
+ </textarea>
+</div>
+
+<div id='slide3' class='slide' />
+<img src='images/r3.png'  />
+ <textarea style='left:130px;width:190px;'>
+I WISH AN ANIMATED VIEW AS NEVER SEEN BEFORE!
+ </textarea>
+</div>
+
+<div id='slide4' class='slide' />
+<img src='images/r4.png'  />
+ <textarea style='left:115px;width:190px;height:100px'>
+I NEED TO REJOICE HTML!!! 
+ </textarea>
+</div>
+
 <img id='slide5' src='images/r5.png' class='slide' />
 <img id='slide6' src='images/r6.png' class='slide' />
-<img id='slide7' src='images/r7.png' class='slide' />
+
+<div id='slide7' class='slide' />
+<img src='images/r7.png'  />
+ <textarea style='left:143px;width:190px;height:150px'>
+WAY BOY! ARE YOU TELLING ME YOU CAN KEEP THE HTML INTACT AND YET OFFER AN ANIMATED EXPERIENCE? 
+ </textarea>
+</div>
+
+
 <img id='slide8' src='images/r8.png' class='slide' />
 <img id='slide9' src='images/r9.png' class='slide' />
 <img id='slide10' src='images/r10.png' class='slide' />
-<div style='width:300px;height:220px;position:relative'>
-<img id='slide11' src='images/r11.png' class='slide' />
-   <a style='position:absolute;top:150px;left:150px;' href='https://github.com/taboca/TagVisor'>Know more via GitHub</a>
+<div style='width:300px;height:220px;position:relative' id='slide11'>
+<img  src='images/r11.png' class='slide' />
+ <textarea style='left:138px;width:190px;height:150px;top:40px'>
+YEAH AND IT'S HERE. LEARN MORE!
+ </textarea>
+
+   <input style='position:absolute;top:150px;left:150px;' value='https://github.com/taboca/TagVisor'>Know more via GitHub</input>
 </div>
 
 </body>
