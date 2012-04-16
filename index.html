@@ -7,13 +7,33 @@
 <script type="text/javascript" src="lib/tagvisor.js"></script>
 <script>
 
-$.scPlayer.defaults.autoPlay = true;
-$.scPlayer.defaults.randomize = true;
+var on = false; 
 
 function start() { 
 	tv.add($('#animation li'));
+	tv.tickMode = true;
 	tv.play();
 } 
+
+function startKeys() { 
+	tv.tickMode = false;
+
+	tv.add($('#animation li'));
+	tv.play(1); 
+	on = true;
+	document.body.addEventListener("keydown", function (e) { 
+		if(e.keyCode==37) { 
+			tv.tick(-1);
+			e.preventDefault();
+		} 
+		if(e.keyCode==39) { 
+			tv.tick(1);
+			e.preventDefault();
+		} 
+	}, false); 
+
+} 
+
 </script>
 
 <style>
@@ -65,6 +85,7 @@ textarea {
 
 <div class='header' style='text-align:center;margin-top:1em'>
 <a href='javascript:' style='font-size:150%' onclick='start()'>Start Couch Mode</a>
+<a href='javascript:' style='font-size:150%' onclick='startKeys()'>Keyboard mode</a>
 <br />tip: you can also edit the text boxes. :) 
 </div>
 
