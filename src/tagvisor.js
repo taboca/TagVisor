@@ -46,6 +46,7 @@ var tv = {
         recordScale: 1,
 	itemsByTicks: new Array(),
 	sortedItems: new Array(),
+	tickMode: true, 	
 	dataStyle: ".slide { position:relative; }  ", 
 
 	dumpTransform: function (property) { 
@@ -121,7 +122,13 @@ var tv = {
 	play: function () { 
 		if(this.playMode==false) {
 			this.setup();
-		} 
+		}  
+		var these = this; 
+		setTimeout(function () { these.startPlay() }, 500); 
+ 
+	},
+  
+	startPlay: function () { 
 		this.playMode=true; 
 		this.sortedItems = this.sortArray(this.itemsByTicks);
 		var i=0;
@@ -132,15 +139,22 @@ var tv = {
 		this.ticksSerialized[i]=-1;
 		this.currentTick=0;
 		this.counterSequential=0;
-		this.tick();
-	} ,
+		this.tick(1);
+	},
 
-	tick: function () { 
+	tick: function (dir) { 
 		if(this.playMode) { 
 			try { 
+				if(!this.tickMode) { 
+					if(dir==1) this.counterSequential++;
+					if(dir==-1) this.counterSequential--;
+				} 
 				var nextTick = this.ticksSerialized[this.counterSequential];
 				if(nextTick > -1) {
-					if(nextTick==this.currentTick) { 
+					if(nextTick==this.currentTick || this.tickMode == false) { 
+						if(this.tickMode == false ) { 
+							this.currentTick = nextTick;
+						} 
 						var lookUpElement = this.itemsByTicks[this.currentTick];
 						if(lookUpElement) {  
 
@@ -202,22 +216,27 @@ try {
 							if(fEffect == "movecenter") { 
 								this.effects_animateNext(targetElement, currDoc,dur, true);
 							} 
-							this.counterSequential++;
+							if(this.tickMode )  { 
+								this.counterSequential++;
+							} 
 						} 
 					} 
-					this.currentTick++;
+					if(this.tickMode) { 
+						this.currentTick++;
+					} 
 					var stampThis = this; 
-					setTimeout(function () { stampThis.tick() } ,500); 
-
+					if(this.tickMode) { 
+						setTimeout(function () { stampThis.tick(1) } ,500); 
+					} 
 				} else { 
 					//end
-						
 				} 
 	
 			} catch (i) { 
+				if(this.tickMode) this.currentTick++;  
 				this.currentTick++;
 				var stampThis = this; 
-				setTimeout(function () { stampThis.tick() } ,500); 
+				setTimeout(function () { stampThis.tick(1) } ,500); 
 			}
 		} 
 	} ,
@@ -281,6 +300,7 @@ try {
 		} 
 	        var str =   "-moz-transition-property: -moz-transform, -moz-transform-origin; -moz-transition-duration:"+t+"s;-moz-transform:scale("+sC+");";
 	        str += "-webkit-transition-property: -webkit-transform, -webkit-transform-origin; -webkit-transition-duration:"+t+"s;-webkit-transform:scale("+sC+");";
+	        str += "-o-transition-property: -o-transform, -o-transform-origin; -o-transition-duration:"+t+"s;-o-transform:scale("+sC+");";
 	        d.documentElement.setAttribute("style",str);
 	},
 	effects_animateNext: function (a,d,t,center) { 
