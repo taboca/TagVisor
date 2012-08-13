@@ -46,13 +46,14 @@ var tv = {
         recordScale: 1,
 	itemsByTicks: new Array(),
 	sortedItems: new Array(),
+        noScrollX:null, 
+        noScrollY:null, 
 	tickMode: true, 	
 	dataStyle: ".slide { position:relative; }  ", 
 
 	dumpTransform: function (property) { 
 		return prop+";-ms-"+prop+";-webkit-"+prop+";-moz-"+prop+";-o-"+prop+";";
 	},
-
 	setup: function (viewportAttributes) { 
 		viewWidth = document.body.clientWidth;
 		viewHeight =  document.body.clientHeight;
@@ -61,20 +62,13 @@ var tv = {
 		inlinestyle.setAttribute("rel","stylesheet");
 		inlinestyle.setAttribute("href","data:text/css,"+ escape(dataStyle));
 		document.getElementsByTagName("head")[0].appendChild(inlinestyle);
-
-
 	}, 
-
-        noScrollX:null, 
-        noScrollY:null, 
-
 	refreshView: function (d) { 
-		this.viewLeft = document.documentElement.clientLeft;
-		this.viewTop =  document.documentElement.clientTop;
-		this.viewWidth = document.documentElement.clientWidth;
-		this.viewHeight =  document.documentElement.clientHeight;
+		this.viewLeft = d.documentElement.clientLeft;
+		this.viewTop =  d.documentElement.clientTop;
+		this.viewWidth = d.documentElement.clientWidth;
+		this.viewHeight = d.documentElement.clientHeight;
 	}, 
-
 	sortArray: function (arr){
 	  var sortedKeys = new Array();
 	  var sortedObj = {};
@@ -283,7 +277,6 @@ try {
 		var sW = this.viewWidth/a.offsetWidth;
 		var sH = this.viewHeight/a.offsetHeight;
 
-
 		var sC = 0;
 	
 			var x= el.left;	
@@ -319,13 +312,7 @@ try {
 		var ww = a.offsetWidth;
 		var www = window.innerWidth;		        
 	        var scale = www/(ww+800);
-
-		//document.getElementById("pagescale").setAttribute("style"," -moz-transition-property: -moz-transform; -moz-transform:scale("+scale+"); -moz-transition-duration:3s;  -webkit-transition-property: -webkit-transform; -webkit-transform:scale("+scale+"); -webkit-transition-duration:3s;  -o-transition-property: -o-transform; -o-transform:scale("+scale+"); -o-transition-duration:3s;");
-	
 		x-=0;
 	        d.getElementById("pagetranslate").setAttribute("style","-moz-transition-property: -moz-transform; -moz-transform:translate("+-1*x+","+-1*y+"); -moz-transition-duration:"+t+"s; -webkit-transition-property: -webkit-transform; -webkit-transform:translate("+parseInt(-1*x)+"px,"+parseInt(-1*y)+"px); -webkit-transition-duration:"+t+"s; -o-transition-property: -o-transform; -o-transform:translate("+parseInt(-1*x)+"px,"+parseInt(-1*y)+"px); -o-transition-duration:"+t+"s;");
 	} 
-
 } 
-
-

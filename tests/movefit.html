@@ -1,63 +1,26 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<script src="../src/tagvisor.js"></script>
+<link href="../src/tagvisor.css" media="screen" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery-min.js"></script>
+<script src="../src/tagvisor.js"></script>
 <script>
-
   function start() {
-
 	tv.setup();
 	tv.add($('#animation li'));
 	tv.play();
-
   } 
-
 </script>
+</head>
 
-<style>
-	
-	#animation { 
-		display:none;
-	} 	
+<body onload="start()">
 
-	.viewport { 	
-		-moz-box-shadow:0 0 25px black;	
-		width:640px;
-		height:130px;
-		margin:auto;
-		border:1px solid red;
-	} 
-
-	.slide { 
-		text-align:center;
-		padding:20px;
-		border:10px solid blue;
-	} 
-
-	.outerslide { 
-		width:600px;
-		height:130px;
-	} 
-
-	body { 
-		color:gray;
-	} 
-	</style>
-
-	</head>
-
-	<ul id='animation'>
-
+<ul id='animation'>
 <li data-target='slide1' data-time="2s" data-effect="scalefit" data-duration="3s" />
 <li data-target='slide2' data-time="5s" data-effect="scalefit" data-duration="3s" />
 <li data-target='slide3' data-time="8s" data-effect="scalefit" data-duration="3s" />
 <li data-target='slide3' data-time="11s" data-effect="scalefit" data-duration="3s" />
-
 </ul>
-
-<body onload="start()">
 
 <h2>You can edit this code and change the #viewport css to have overflow:hidden 
 if you want to hide the areas outside the 'red' viewport</h2>
