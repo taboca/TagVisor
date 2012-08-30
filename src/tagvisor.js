@@ -176,7 +176,7 @@ try {
 								var str = fCommand.split("dispatch_load('"); 
 								var str1 = str[1].split("'");
 								var url = str1[0];
-								lookUpElement.src=url+"?"+Math.random();
+								targetElement.src=url+"?"+Math.random();
 } catch (i) {  } 
 							} 
 							} 
