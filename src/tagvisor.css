@@ -2,26 +2,4 @@
 	display:none;
 } 	
 
-	.viewport { 	
-		-moz-box-shadow:0 0 25px black;	
-		width:640px;
-		height:130px;
-		margin:auto;
-		border:1px solid red;
-	} 
-
-	.slide { 
-		text-align:center;
-		padding:20px;
-		border:10px solid blue;
-	} 
-
-	.outerslide { 
-		width:600px;
-		height:130px;
-	} 
-
-	body { 
-		color:gray;
-	} 
 
