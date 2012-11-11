@@ -57,7 +57,7 @@ var tv = {
 	setup: function (viewportAttributes) { 
 		viewWidth = document.body.clientWidth;
 		viewHeight =  document.body.clientHeight;
-		var dataStyle = this.dataStyle + "html { overflow:hidden; width:100%; height:100%; " + viewportAttributes + "} ";
+		var dataStyle = this.dataStyle + "body { margin:0 } html { overflow:hidden; width:100%; height:100%; " + viewportAttributes + "} ";
 		var inlinestyle = document.createElement('link');
 		inlinestyle.setAttribute("rel","stylesheet");
 		inlinestyle.setAttribute("href","data:text/css,"+ escape(dataStyle));
