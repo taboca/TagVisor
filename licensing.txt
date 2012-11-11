@@ -1,1 +1,0 @@
-./lib/jquery* is also jquery – separated from this. 
