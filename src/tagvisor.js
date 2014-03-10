@@ -37,6 +37,7 @@ var tv = {
 		var inlinestyle = document.createElement('link');
 		inlinestyle.setAttribute("rel","stylesheet");
 		inlinestyle.setAttribute("href","data:text/css,"+ escape(dataStyle));
+        window.scrollTo(0,0);
 		document.getElementsByTagName("head")[0].appendChild(inlinestyle);
 	}, 
 	refreshView: function (d) { 

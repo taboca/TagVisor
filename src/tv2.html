@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script src='tv2.js'></script>
+
+        <script>
+                function t1() { 
+
+                    tv2.when("#target2",'111',function () {
+                        var state = tv2.start('222', '#target2', 'body');
+                        tv2.call.cameraFollow(state);
+                    });
+
+                    var state = tv2.start('111','#target2','#target2');
+                    tv2.call.fitWindow(state);
+
+                    //tv2.sequencer({'111':'1s', '333':'4s'})
+
+                }
+        </script>
+
+        <style>
+             #s, #t { width:320px; height:240px; } 
+             .slide { width:100px; height:100px; background-color:red; }
+        </style>
+    </head>
+    <body onload='t1()'>
+        <div id='s' ><div id='t'>
+           <div id='target' class='slide'>hello world</div>
+           <div id='target2' class='slide'>hello world</div>
+           <div id='target3' style='width:100px;height:100px;background:blue;position:relative'>hello world</div>
+       </div>
+       </div>
+    </body>
+</html>
