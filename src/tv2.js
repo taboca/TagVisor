@@ -16,21 +16,24 @@ var tv2 = {
         "past" :null,
         "store" : null,
         "proxy" : null,
-        "xpathDOMin" : null, "xpathDOMout":null 
+        "queryIn" : null, "queryOut":null 
      },
 
-     start: function (eventId, selectIn, selectOut, proxyFunctions) {
+     start: function (selectIn, selectOut, eventId) {
         // this might need to save prior mutation, .. 
         var stamp = this.stampProvider();
+        if(eventId==null) {
+            eventId = this.idProvider();
+        }
         var elIn = this.get(selectIn);
         var elOut = this.get(selectOut);
         elIn.setAttribute('data-mutation-in',''+eventId);
-        elOut.setAttribute('data-mutation-out',''+eventId);
+        //elOut.setAttribute('data-mutation-out',''+eventId);
         var refPrior = elIn.getAttribute('data-mutation-out');
         // try catch ..
         var refRecordPrior = this.mutationRecord[refPrior];
 
-        return {"stamp":stamp, "id":eventId, 'inState': refRecordPrior};
+        return {"stamp":stamp, "id":eventId, "queryIn": selectIn, "queryOut": selectOut, 'inState': refRecordPrior};
 
      },
 
@@ -41,7 +44,9 @@ var tv2 = {
      // we will need to disconnect, eventually. 
      //                 observer.disconnect();
 
-     when: function (querySelectorParent, mutationEvent, functionCall) { 
+     when: function (state, functionCall) { 
+        var querySelectorParent = state.queryOut;
+        var mutationEvent = state.id; 
         var target = document.querySelector(querySelectorParent);
         // create an observer instance
         var observer = new MutationObserver(function(mutations) {
@@ -68,6 +73,10 @@ var tv2 = {
 
      stampProvider: function () { 
         return Math.random();
+     }, 
+
+     idProvider: function () { 
+        return 'tv2_'+Math.random();
      }, 
 
      out: function (mutationId) {
@@ -141,7 +150,8 @@ tv2.call = {
 
         var t = 5;
         // we won't use domIn for now. 
-        var transformElementTranslate = tv2.out(mutationId)[0];
+        //var transformElementTranslate = tv2.out(mutationId)[0];
+        var transformElementTranslate = tv2.get(st.queryOut);
         var transformElementScale = transformElementTranslate.parentNode;
 
         var a = tv2.in(mutationId).node;
@@ -210,6 +220,8 @@ tv2.call = {
         str += "-o-transition-property: -o-transform-origin:"   +parseInt(viewWidth/2)+"px "+parseInt(viewHeight/2)+"px;;; -o-transition-duration:"+t+"s;-o-transform:scale("+sC+");";
         transformElementScale.setAttribute("style",str);
 
+        transformElementTranslate.setAttribute('data-mutation-out',''+st.id);
+
     },
 
     fitWindow: function (state) {
@@ -218,7 +230,8 @@ tv2.call = {
 
         t=5;
         var a = tv2.in(mutationId).node; // this may return serialized..
-        var a = tv2.out(mutationId)[0];
+        //var a = tv2.out(mutationId)[0];
+        var a = tv2.get(state.queryOut);
 
         var dW = a.offsetWidth; // need to pull DOM, not the actual screen-based. 
         //var dH = a.offsetHeight;
@@ -232,14 +245,16 @@ tv2.call = {
 
         var el = this.offset(a);
 
-        var oldStr =  a.getAttribute('style');
-
+        var oldStr = a.getAttribute('style');
+ 
+        // bug... cannot add to it...
         var str = oldStr+";-webkit-transition-property: height; -webkit-transition-duration:"+t+"s;height:"+parseInt(dH)+"px";
         a.setAttribute('style',str);
 
         var out = tv2.mutationRecord;
         out.store = {'height':parseInt(dH), 'width': dW, 'top': el.top, 'left': el.left };
         tv2.mutationSession[mutationId] = out;
+        a.setAttribute('data-mutation-out',''+state.id);
 
     }
     /// This is our architectural approach to proxy 

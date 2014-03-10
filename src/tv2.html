@@ -5,15 +5,14 @@
         <script>
                 function t1() { 
 
-                    tv2.when("#target2",'111',function () {
-                        var state = tv2.start('222', '#target2', 'body');
+                    var state = tv2.start('#target2','#target2');
+
+                    tv2.when(state,function () {
+                        var state = tv2.start('#target2', 'body');
                         tv2.call.cameraFollow(state);
                     });
 
-                    var state = tv2.start('111','#target2','#target2');
                     tv2.call.fitWindow(state);
-
-                    //tv2.sequencer({'111':'1s', '333':'4s'})
 
                 }
         </script>
