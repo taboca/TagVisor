@@ -1,144 +1,33 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg">
-<head>
-<title>TagVisor.js Demonstration</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript" src="lib/tagvisor.js"></script>
-<script>
+<html>
+    <head>
+        <script src='tv2.js'></script>
 
-var on = false; 
+        <script>
+                function t1() { 
 
-function start() { 
-	tv.add($('#animation li'));
-	tv.tickMode = true;
-	tv.play();
-} 
+                    var state = tv2.start('#target2','#target2');
 
-function startKeys() { 
-	tv.tickMode = false;
+                    tv2.when(state,function () {
+                        var state = tv2.start('#target2', 'body');
+                        tv2.call.cameraFollow(state);
+                    });
 
-	tv.add($('#animation li'));
-	tv.play(1); 
-	on = true;
-	document.body.addEventListener("keydown", function (e) { 
-		if(e.keyCode==37) { 
-			tv.tick(-1);
-			e.preventDefault();
-		} 
-		if(e.keyCode==39) { 
-			tv.tick(1);
-			e.preventDefault();
-		} 
-	}, false); 
+                    tv2.call.fitWindow(state);
 
-} 
+                }
+        </script>
 
-</script>
-
-<style>
-	
-textarea { 
-  position:absolute;
-  top:10px;left:150px;
-  width:150px; 
-  height:120px; 
-  font-family: 'Kaushan Script', cursive;
-  border-radius:15px; 
-  background-color:#eee;
-  border:0px;
-  padding:3px;
-  overflow:hidden;
-  box-shadow:3px 3px 3px #999;
-} 
-
-.slide { 
-  position:relative;
-  display:inline-block;
-  margin:10px;
-} 
- 
-#animation { display:none } 
-
-</style>
-
-</head>
-
-<body id='pagescale'>
-
-
-<ul id='animation'>
-  <li data-target='slide1' data-time="1s" data-effect="scalefit" data-duration="3s" />
-  <li data-target='slide2' data-time="5s" data-effect="scalefit" data-duration="3s" />
-  <li data-target='slide3' data-time="8s" data-effect="scalefit" data-duration="3s" />
-  <li data-target='slide4' data-time="12s" data-effect="scalefit" data-duration="3s" />
-  <li data-target='slide5' data-time="16s" data-effect="scalefit" data-duration="3s" />
-  <li data-target='slide5' data-time="17s" data-effect="flip3d" data-duration="3s" />
-  <li data-target='slide6' data-time="21s" data-effect="scalefit" data-duration="3s" />
-  <li data-target='slide7' data-time="24s" data-effect="scalefit" data-duration="4s" />
-  <li data-target='slide8' data-time="34s" data-effect="scalefit" data-duration="3s" />
-  <li data-target='slide9' data-time="38s" data-effect="scalefit" data-duration="3s" />
-  <li data-target='slide10' data-time="42s" data-effect="scalefit" data-duration="3s" />
-  <li data-target='slide11' data-time="46s" data-effect="scalefit" data-duration="3s" />
-  <li data-target='pagescale' data-time="50s" data-effect="end" data-duration="3s" />
-</ul>
-
-<div class='header' style='text-align:center;margin-top:1em'>
-<a href='javascript:' style='font-size:150%' onclick='start()'>Start Couch Mode</a>
-<a href='javascript:' style='font-size:150%' onclick='startKeys()'>Keyboard mode</a>
-<br />tip: you can also edit the text boxes. :) 
-</div>
-
-<div id='slide1' class='slide' />
-<img src='images/r1.png' />
- <textarea>
-  HTML IS TOO STUCK BUT KINDA NICE FOR A CRAWLER.  
- </textarea>
-</div>
-
-<div id='slide2' class='slide' />
-<img src='images/r2.png' />
- <textarea style='left:200px;width:90px'>
-HUMNMN...
- </textarea>
-</div>
-
-<div id='slide3' class='slide' />
-<img src='images/r3.png'  />
- <textarea style='left:130px;width:190px;'>
-I WISH AN ANIMATED VIEW AS NEVER SEEN BEFORE!
- </textarea>
-</div>
-
-<div id='slide4' class='slide' />
-<img src='images/r4.png'  />
- <textarea style='left:115px;width:190px;height:100px'>
-I NEED TO REJOICE HTML!!! 
- </textarea>
-</div>
-
-<img id='slide5' src='images/r5.png' class='slide' />
-<img id='slide6' src='images/r6.png' class='slide' />
-
-<div id='slide7' class='slide' />
-<img src='images/r7.png'  />
- <textarea style='left:143px;width:190px;height:150px'>
-WAY BOY! ARE YOU TELLING ME YOU CAN KEEP THE HTML INTACT AND YET OFFER AN ANIMATED EXPERIENCE? 
- </textarea>
-</div>
-
-
-<img id='slide8' src='images/r8.png' class='slide' />
-<img id='slide9' src='images/r9.png' class='slide' />
-<img id='slide10' src='images/r10.png' class='slide' />
-<div style='width:300px;height:220px;position:relative' id='slide11'>
-<img  src='images/r11.png' class='slide' />
- <textarea style='left:138px;width:190px;height:150px;top:40px'>
-YEAH AND IT'S HERE. LEARN MORE!
- </textarea>
-
-   <input style='position:absolute;top:150px;left:150px;' value='https://github.com/taboca/TagVisor'>Know more via GitHub</input>
-</div>
-
-</body>
+        <style>
+             #s, #t { width:320px; height:240px; } 
+             .slide { width:100px; height:100px; background-color:red; }
+        </style>
+    </head>
+    <body onload='t1()'>
+        <div id='s' ><div id='t'>
+           <div id='target' class='slide'>hello world</div>
+           <div id='target2' class='slide'>hello world</div>
+           <div id='target3' style='width:100px;height:100px;background:blue;position:relative'>hello world</div>
+       </div>
+       </div>
+    </body>
 </html>
