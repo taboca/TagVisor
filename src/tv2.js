@@ -148,7 +148,7 @@ tv2.call = {
 
 //this.setup();
 
-        var t = 5;
+        var t = 3;
         // we won't use domIn for now. 
         //var transformElementTranslate = tv2.out(mutationId)[0];
         var transformElementTranslate = tv2.get(st.queryOut);
@@ -256,8 +256,68 @@ tv2.call = {
         tv2.mutationSession[mutationId] = out;
         a.setAttribute('data-mutation-out',''+state.id);
 
+    },
+
+    centerParent: function (state) {
+        
+        var mutationId = state.id;
+
+        t=5;
+        var el = tv2.in(mutationId); // this may return serialized..
+        //var a = tv2.out(mutationId)[0];
+        var a = tv2.get(state.queryOut);
+
+        var viewHeight = a.offsetHeight;
+        
+        var height = el.node.offsetHeight;
+
+        try { 
+            height = el.store.height;
+        } catch (i) { } 
+
+        var dH = (-1*viewHeight)+(viewHeight-height)/2;
+        var oldStr = '';
+        try { 
+          //  oldStr = a.getAttribute('style');
+        } catch(i) { }
+
+        // bug... cannot add to it.;
+        a.style.transitionProperty='marginTop';
+        a.style.transitionDuration='3s';
+        a.style.marginTop= dH+'px';
+
+        var out = tv2.mutationRecord;
+        out.store = {'height':parseInt(dH), 'width': el.node.offsetWidth , 'top': el.top, 'left': el.left };
+        tv2.mutationSession[mutationId] = out;
+        a.setAttribute('data-mutation-out',''+state.id);
+
     }
     /// This is our architectural approach to proxy 
 
-
 } 
+
+tv2.proxy = {
+
+    /// This is our architectural approach to proxy 
+    parse: function (jQuerObj) {
+
+        var innerContent = jQuerObj.html();
+
+        if(innerContent.indexOf('!-- inline')>-1) { 
+            var title = $(jQuerObj).find('h2').text();
+            var person = $(jQuerObj).find('p').text();
+            return "<div class='slide-inline'><span class='wrapParent'><span class='wrapInner'><span class='wrapInnerInner'>"+title+"</span></span></span></div>";
+        }
+
+        if(innerContent.indexOf('!-- cita')>-1) { 
+            var title = $(jQuerObj).find('h2').text();
+            var person = $(jQuerObj).find('p').text();
+            return "<div class='slide-quote'><p>"+title+"</p><div>"+person+"</div></div>";
+        }
+
+    }
+
+
+}
+
+
