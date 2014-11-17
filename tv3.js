@@ -232,7 +232,7 @@ var tv2 = {
                     tv3.call.centerParent(domElement, this);
                 }
                 if(this.classAction == 'slide-tilt') {
-                    //tv3.call.tilt(domElement, this);
+                    tv3.call.tilt(domElement, this);
                 }
                 if(this.classAction == 'inner-typing') {
                     tv3.call.typing(domElement, this);
