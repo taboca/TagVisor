@@ -1,33 +1,43 @@
 <html>
     <head>
-        <script src='tv2.js'></script>
+        <script src='tv3.js'></script>
 
         <script>
                 function t1() { 
 
-                    var state = tv2.start('#target2','#target2');
-
-                    tv2.when(state,function () {
-                        var state = tv2.start('#target2', 'body');
-                        tv2.call.cameraFollow(state);
-                    });
-
-                    tv2.call.fitWindow(state);
+                    var session = tv2.run('#s1');
 
                 }
         </script>
 
         <style>
-             #s, #t { width:320px; height:240px; } 
-             .slide { width:100px; height:100px; background-color:red; }
+            #s1 { border:1px solid black; width:300px; } 
+            *[data-animation] { border:1px solid gray} 
+            h1{ text-align:center;font-size:40px} 
         </style>
     </head>
     <body onload='t1()'>
-        <div id='s' ><div id='t'>
-           <div id='target' class='slide'>hello world</div>
-           <div id='target2' class='slide'>hello world</div>
-           <div id='target3' style='width:100px;height:100px;background:blue;position:relative'>hello world</div>
-       </div>
-       </div>
+
+
+        <div id='s1'>
+  <div data-animation='animate slide-tilt'  >
+  <div data-animation='animate slide-center-parent' data-target='.slide-null' >
+    <div data-animation='animate slide-camera'>
+      <div data-animation='animate slide-fit-window' >
+        <div class='slide-null' data-animation='slide-null'>
+           <div class='slide-logo'  >
+                <h1>TagVisor</h1>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+<div id='debugCanvas'></div>
+
+
     </body>
 </html>
