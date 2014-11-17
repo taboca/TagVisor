@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script src='tv3.js'></script>
+
+        <script>
+                function t1() { 
+
+                    var session = tv2.run('#s1');
+
+                }
+        </script>
+
+        <style>
+            #s1 { border:1px solid black; width:300px; } 
+            *[data-animation] { border:1px solid gray} 
+            h1{ text-align:center;font-size:40px} 
+        </style>
+    </head>
+    <body onload='t1()'>
+
+
+        <div id='s1'>
+  <div data-animation='animate slide-center-parent' data-target='.slide-null' >
+    <div data-animation='animate slide-camera'>
+      <div data-animation='animate slide-fit-window' >
+        <div class='slide-null' data-animation='slide-null'>
+           <div class='slide-logo'  >
+                <h1>TagVisor</h1>
+           </div>
+        </div>
+      </div>
+  </div>
+  </div>
+  </div>
+
+
+<div id='debugCanvas'></div>
+
+
+    </body>
+</html>
